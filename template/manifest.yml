@@ -1,0 +1,15 @@
+# Basic package metadata
+package: example
+version: 1.0.0
+
+# Build information
+build:
+  pass1:
+    enabled: true
+    priority: 0
+    script: build.sh
+    patch: false
+  pass2:
+    enabled: false
+  pass3:
+    enabled: false
