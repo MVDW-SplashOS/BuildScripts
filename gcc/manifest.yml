@@ -21,11 +21,11 @@ build:
   1:
     enabled: true
     priority: 1
-    script: "pass1.sh"
+    script: "gcc-pass1.sh"
     patch: false
   2:
     enabled: true
     priority: 4
-    script: "libstdcpp.sh"
+    script: "libstdcpp-pass1.sh"
     patch: false
 

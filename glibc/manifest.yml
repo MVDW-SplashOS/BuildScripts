@@ -6,7 +6,7 @@ version: "2.37"
 build:
   1:
     enabled: true
-    priority: 0
+    priority: 3
     script: "build.sh"
     patch: "fhs-1.patch"
 

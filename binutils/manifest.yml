@@ -9,9 +9,3 @@ build:
     priority: 0
     script: "pass1.sh"
     patch: false
-  2:
-    enabled: true
-    priority: 0
-    script: "pass1.sh"
-    patch: false
-
