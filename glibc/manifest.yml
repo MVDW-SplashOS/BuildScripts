@@ -1,0 +1,13 @@
+# Basic package metadata
+package: "Glibc"
+version: "2.37"
+
+# Build information
+build:
+  1:
+    enabled: true
+    priority: 0
+    script: "build.sh"
+    patch: "fhs-1.patch"
+
+

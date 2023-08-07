@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Linux"
+version: "6.1.11"
+
+# Build information
+build:
+  1:
+    enabled: true
+    priority: 2
+    script: "headers.sh"
+    patch: false
+
