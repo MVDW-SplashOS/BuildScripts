@@ -19,13 +19,9 @@ dependency:
 # Build information
 build:
   1:
-    enabled: true
-    priority: 1
     script: "gcc-pass1.sh"
     patch: false
   2:
-    enabled: true
-    priority: 4
     script: "libstdcpp-pass1.sh"
     patch: false
 

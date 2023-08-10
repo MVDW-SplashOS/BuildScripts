@@ -13,8 +13,6 @@ dependency:
 # Build information
 build:
   1:
-    enabled: true
-    priority: 0
-    script: "build.sh"
+    script: "example-pass1.sh"
     patch: false
 
