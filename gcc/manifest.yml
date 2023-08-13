@@ -24,4 +24,6 @@ build:
   2:
     script: "libstdcpp-pass1.sh"
     patch: false
-
+  3:
+    script: "gcc-pass2.sh"
+    patch: false

@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Xz Utils"
+version: "5.4.1"
+
+# Build information
+build:
+  1:
+    script: "xz-pass1.sh"
+    patch: false
+

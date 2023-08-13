@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Tar"
+version: "1.3.4"
+
+# Build information
+build:
+  1:
+    script: "tar-pass1.sh"
+    patch: false
+

@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Bash"
+version: "5.2.12"
+
+# Build information
+build:
+  1:
+    script: "bash-pass1.sh"
+    patch: false
+

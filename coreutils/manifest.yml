@@ -1,0 +1,11 @@
+# Basic package metadata
+package: "Coreutils"
+version: "9.1"
+
+
+# Build information
+build:
+  1:
+    script: "coreutils-pass1.sh"
+    patch: false
+

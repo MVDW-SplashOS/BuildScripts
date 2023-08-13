@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Findutils"
+version: "4.9.0"
+
+# Build information
+build:
+  1:
+    script: "findutils-pass1.sh"
+    patch: false
+

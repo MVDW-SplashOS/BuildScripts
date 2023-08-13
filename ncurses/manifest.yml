@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Ncurses"
+version: "6.4"
+
+# Build information
+build:
+  1:
+    script: "ncurses-pass1.sh"
+    patch: false
+
