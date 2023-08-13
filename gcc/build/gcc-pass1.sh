@@ -3,7 +3,7 @@ tar -xf "../mpfr-4.2.0.tar.xz"
 mv -vn "mpfr-4.2.0" mpfr
 tar -xf "../gmp-6.2.1.tar.xz"
 mv -vn "gmp-6.2.1" gmp
-tar -xf "../mpc-1.3.1.tar.gz"
+tar -xf "../mpc-1.3.1.tar.xz"
 mv -vn "mpc-1.3.1" mpc
 
 
