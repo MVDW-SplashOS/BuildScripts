@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "yq"
+version: "4.35.1"
+
+# Build information
+build:
+  1:
+    script: "yq-pass1.sh"
+    patch: false
+
