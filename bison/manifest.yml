@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "bison"
+version: "3.8.2"
+
+# Build information
+build:
+  1:
+    script: "bison-pass1.sh"
+    patch: false
+
