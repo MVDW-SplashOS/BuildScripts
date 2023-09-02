@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "util linux"
+version: "2.38.1"
+
+# Build information
+build:
+  1:
+    script: "util_linux-pass1.sh"
+    patch: false
+
