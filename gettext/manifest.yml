@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "gettext"
+version: "0.21.1"
+
+# Build information
+build:
+  1:
+    script: "gettext-pass1.sh"
+    patch: false
+
