@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Perl"
+version: "5.36.0"
+
+# Build information
+build:
+  1:
+    script: "perl-pass1.sh"
+    patch: false
+
