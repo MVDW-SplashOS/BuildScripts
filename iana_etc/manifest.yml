@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Iana etc"
+version: "20230202"
+
+# Build information
+build:
+  1:
+    script: "iana_etc-pass1.sh"
+    patch: false
+
