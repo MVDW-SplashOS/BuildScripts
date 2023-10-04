@@ -34,6 +34,6 @@ jobs:
         cd SourceStream  # Change to the directory of the downloaded repo
         for package in ${{ steps.changed_packages.outputs.changed_packages }}; do
           if [ -d "$package" ]; then
-            python run.py -p $folder
+            python run.py p:$folder
           fi
         done
