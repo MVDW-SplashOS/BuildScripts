@@ -1,0 +1,39 @@
+name: Deploy Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      
+    - name: Get List of Changed Folders
+      id: changed_packages
+      run: |
+        changed_packages=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | awk -F/ '{print $1}' | uniq)
+        echo "::set-output name=changed_packages::$changed_packages"
+        
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+
+    - name: Get SourceStream
+      run: |
+        git clone https://github.com/MVDW-SplashOS/SourceStream.git
+      working-directory: ${{ github.workspace }}
+
+    - name: Run Python Script
+      run: |
+        cd SourceStream  # Change to the directory of the downloaded repo
+        for package in ${{ steps.changed_packages.outputs.changed_packages }}; do
+          if [ -d "$package" ]; then
+            python run.py -p $folder
+          fi
+        done
