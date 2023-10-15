@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Readline"
+version: "8.2"
+
+# Build information
+build:
+  1:
+    script: "readline-pass1.sh"
+    patch: false
+

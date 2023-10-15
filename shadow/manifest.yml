@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Shadow"
+version: "4.13"
+
+# Build information
+build:
+  1:
+    script: "shadow-pass1.sh"
+    patch: false
+

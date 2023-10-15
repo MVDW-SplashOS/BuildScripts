@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Bzip2"
+version: "1.0.8"
+
+# Build information
+build:
+  1:
+    script: "bzip2-pass1.sh"
+    patch: false
+

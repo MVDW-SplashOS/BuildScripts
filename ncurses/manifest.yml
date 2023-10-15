@@ -7,4 +7,6 @@ build:
   1:
     script: "ncurses-pass1.sh"
     patch: false
-
+  2:
+    script: "ncurses-pass2.sh"
+    patch: false

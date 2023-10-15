@@ -7,4 +7,7 @@ build:
   1:
     script: "bison-pass1.sh"
     patch: false
+  2:
+    script: "bison-pass2.sh"
+    patch: false
 

@@ -10,3 +10,6 @@ build:
   2:
     script: "binutils-pass2.sh"
     patch: false
+  3:
+    script: "binutils-pass3.sh"
+    patch: false

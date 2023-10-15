@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "zlib"
+version: "1.2.13"
+
+# Build information
+build:
+  1:
+    script: "zlib-pass1.sh"
+    patch: false
+

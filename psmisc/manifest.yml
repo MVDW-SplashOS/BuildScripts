@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Psmisc"
+version: "23.6"
+
+# Build information
+build:
+  1:
+    script: "psmisc-pass1.sh"
+    patch: false
+

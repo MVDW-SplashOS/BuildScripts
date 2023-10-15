@@ -7,4 +7,6 @@ build:
   1:
     script: "xz-pass1.sh"
     patch: false
-
+  2:
+    script: "xz-pass2.sh"
+    patch: false

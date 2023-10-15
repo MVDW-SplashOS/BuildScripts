@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Tcl"
+version: "8.6.13"
+
+# Build information
+build:
+  1:
+    script: "tcl-pass1.sh"
+    patch: false
+

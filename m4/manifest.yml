@@ -8,4 +8,7 @@ build:
   1:
     script: "m4-pass1.sh"
     patch: false
+  2:
+    script: "m4-pass2.sh"
+    patch: false
 

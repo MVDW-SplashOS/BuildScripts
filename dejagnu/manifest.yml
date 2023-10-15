@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "DejaGNU"
+version: "1.6.3"
+
+# Build information
+build:
+  1:
+    script: "dejagnu-pass1.sh"
+    patch: false
+

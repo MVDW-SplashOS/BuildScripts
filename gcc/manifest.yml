@@ -27,3 +27,6 @@ build:
   3:
     script: "gcc-pass2.sh"
     patch: false
+  4:
+    script: "gcc-pass3.sh"
+    patch: false

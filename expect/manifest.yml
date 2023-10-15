@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Expect"
+version: "5.45.4"
+
+# Build information
+build:
+  1:
+    script: "expect-pass1.sh"
+    patch: false
+

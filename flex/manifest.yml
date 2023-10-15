@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Flex"
+version: "2.6.4"
+
+# Build information
+build:
+  1:
+    script: "flex-pass1.sh"
+    patch: false
+
