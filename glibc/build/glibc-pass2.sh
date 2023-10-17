@@ -92,7 +92,7 @@ rpc: files
 EOF
 
 
-tar -xf ../../tzdata-2022g.tar.xz /tzdata-2022g
+tar -xf ../../tzdata-2022g.tar.xz --strip-components=1
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}
