@@ -27,4 +27,6 @@ useradd -D --gid 999
 sed -i '/MAIL/s/yes/no/' /etc/default/useradd
 
 
-passwd root
+new_password="splashos"
+
+echo -e "$new_password\n$new_password" | passwd root
