@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Kbd"
+version: "2.5.1"
+
+# Build information
+build:
+  1:
+    script: "kbd-pass1.sh"
+    patch: false
+

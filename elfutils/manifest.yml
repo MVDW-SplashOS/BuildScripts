@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Elfutils"
+version: "0.188"
+
+# Build information
+build:
+  1:
+    script: "libelf-pass1.sh"
+    patch: false
+

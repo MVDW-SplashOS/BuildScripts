@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "GDBM"
+version: "1.23"
+
+# Build information
+build:
+  1:
+    script: "gdbm-pass1.sh"
+    patch: false
+

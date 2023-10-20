@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "XML::Parser"
+version: "2.46"
+
+# Build information
+build:
+  1:
+    script: "xml_parser-pass1.sh"
+    patch: false
+

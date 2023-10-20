@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Inetutils"
+version: "1.0.0"
+
+# Build information
+build:
+  1:
+    script: "inetutils-pass1.sh"
+    patch: false
+

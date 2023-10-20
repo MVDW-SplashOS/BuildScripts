@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Intltool"
+version: "0.51.0"
+
+# Build information
+build:
+  1:
+    script: "intltool-pass1.sh"
+    patch: false
+

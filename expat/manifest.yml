@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Expat"
+version: "2.5.0"
+
+# Build information
+build:
+  1:
+    script: "expat-pass1.sh"
+    patch: false
+

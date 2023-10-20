@@ -7,4 +7,7 @@ build:
   1:
     script: "make-pass1.sh"
     patch: false
+  2:
+    script: "make-pass2.sh"
+    patch: false
 

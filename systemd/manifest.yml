@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Systemd"
+version: "252"
+
+# Build information
+build:
+  1:
+    script: "systemd-pass1.sh"
+    patch: "security_fix-1.patch"
+

@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "OpenSSL"
+version: "3.0.8"
+
+# Build information
+build:
+  1:
+    script: "openssl-pass1.sh"
+    patch: false
+

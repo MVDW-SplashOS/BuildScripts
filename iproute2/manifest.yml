@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "IPRoute2"
+version: "6.1.0"
+
+# Build information
+build:
+  1:
+    script: "iproute2-pass1.sh"
+    patch: false
+

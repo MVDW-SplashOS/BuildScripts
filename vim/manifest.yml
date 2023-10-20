@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "VIM"
+version: "9.0.1273"
+
+# Build information
+build:
+  1:
+    script: "vim-pass1.sh"
+    patch: false
+

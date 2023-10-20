@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Gperf"
+version: "3.1"
+
+# Build information
+build:
+  1:
+    script: "gperf-pass1.sh"
+    patch: false
+

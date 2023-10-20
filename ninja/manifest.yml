@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Ninja"
+version: "1.11.1"
+
+# Build information
+build:
+  1:
+    script: "ninja-pass1.sh"
+    patch: false
+

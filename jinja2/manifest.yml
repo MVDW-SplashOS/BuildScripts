@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Jinja2"
+version: "3.1.2"
+
+# Build information
+build:
+  1:
+    script: "jinja2-pass1.sh"
+    patch: false
+

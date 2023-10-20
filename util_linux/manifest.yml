@@ -1,5 +1,5 @@
 # Basic package metadata
-package: "util linux"
+package: "Util-linux"
 version: "2.38.1"
 
 # Build information
@@ -7,4 +7,6 @@ build:
   1:
     script: "util_linux-pass1.sh"
     patch: false
-
+  2:
+    script: "util_linux-pass2.sh"
+    patch: false

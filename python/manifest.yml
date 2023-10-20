@@ -1,10 +1,13 @@
 # Basic package metadata
-package: "python"
+package: "Python"
 version: "3.11.2"
 
 # Build information
 build:
   1:
     script: "python-pass1.sh"
+    patch: false
+  2:
+    script: "python-pass2.sh"
     patch: false
 

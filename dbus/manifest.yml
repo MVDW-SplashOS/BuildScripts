@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "D-Bus"
+version: "1.14.6"
+
+# Build information
+build:
+  1:
+    script: "dbus-pass1.sh"
+    patch: false
+

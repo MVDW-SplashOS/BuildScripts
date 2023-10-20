@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Libtool"
+version: "2.4.7"
+
+# Build information
+build:
+  1:
+    script: "libtool-pass1.sh"
+    patch: false
+
