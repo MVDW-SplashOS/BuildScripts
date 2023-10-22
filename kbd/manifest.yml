@@ -6,5 +6,5 @@ version: "2.5.1"
 build:
   1:
     script: "kbd-pass1.sh"
-    patch: false
+    patch: "backspace-1.patch"
 
