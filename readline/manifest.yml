@@ -6,5 +6,5 @@ version: "8.2"
 build:
   1:
     script: "readline-pass1.sh"
-    patch: false
+    patch: "upstream_fix-1.patch"
 
