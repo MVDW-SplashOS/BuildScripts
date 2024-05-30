@@ -23,5 +23,5 @@ make DESTDIR=$splash_partition_root install
 
 sed '/RTLDLIST=/s@/usr@@g' -i $splash_partition_root/usr/bin/ldd
 
-echo 'int main(){}' | $LFS_TGT-gcc -xc -
+echo 'int main(){}' | $SPLASHOS_TGT-gcc -xc -
 readelf -l a.out | grep ld-linux
