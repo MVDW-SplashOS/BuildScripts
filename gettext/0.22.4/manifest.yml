@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "gettext"
+version: "0.22.4"
+
+# Build information
+build:
+  1:
+    script: "gettext-pass1.sh"
+    patch: false
+  2:
+    script: "gettext-pass2.sh"
+    patch: false

@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "texinfo"
+version: "7.1"
+
+# Build information
+build:
+  1:
+    script: "texinfo-pass1.sh"
+    patch: false
+  1:
+    script: "texinfo-pass2.sh"
+    patch: false
