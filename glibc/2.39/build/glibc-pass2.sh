@@ -82,7 +82,7 @@ rpc: files
 # End /etc/nsswitch.conf
 EOF
 
-tar -xf ../../tzdata2024a.tar.gz
+tar -xf ../../tzdata-2024a.tar.xz --strip-components=1
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}
