@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Zstd"
+version: "1.5.5"
+
+# Build information
+build:
+  1:
+    script: "zstd-pass1.sh"
+    patch: false
+

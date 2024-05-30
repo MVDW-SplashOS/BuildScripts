@@ -1,7 +1,4 @@
-#expect -c "spawn ls"
-#spawn ls #TODO: Check if output was "The system has no more ptys. Ask your system administrator to create more." if so, stop building.
-
-mkdir -pv build
+mkdir -v build
 cd       build
 
 ../configure --prefix=/usr       \
@@ -12,12 +9,12 @@ cd       build
              --enable-shared     \
              --disable-werror    \
              --enable-64-bit-bfd \
-             --with-system-zlib
+             --with-system-zlib  \
+             --enable-default-hash-style=gnu
 
 make tooldir=/usr
 #make -k check
 #grep '^FAIL:' $(find -name '*.log')
 make tooldir=/usr install
 
-rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,sframe,opcodes}.a
-rm -fv /usr/share/man/man1/{gprofng,gp-*}.1
+rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a

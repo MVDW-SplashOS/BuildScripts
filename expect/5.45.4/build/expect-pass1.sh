@@ -1,3 +1,5 @@
+python3 -c 'from pty import spawn; spawn(["echo", "ok"])'
+
 ./configure --prefix=/usr           \
             --with-tcl=/usr/lib     \
             --enable-shared         \

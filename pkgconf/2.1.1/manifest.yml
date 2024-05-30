@@ -1,10 +1,10 @@
 # Basic package metadata
-package: "Pkg-config"
-version: "0.29.2"
+package: "Pkgconf"
+version: "2.1.1"
 
 # Build information
 build:
   1:
-    script: "pkgconfig-pass1.sh"
+    script: "pkgconf-pass1.sh"
     patch: false
 

@@ -1,6 +1,3 @@
-sed '/width -=/s/workend - string/number_length/' \
-    -i stdio-common/vfprintf-process-arg.c
-    
 mkdir -pv build
 cd       build
 
@@ -8,9 +5,9 @@ echo "rootsbindir=/usr/sbin" > configparms
 
 ../configure --prefix=/usr                            \
              --disable-werror                         \
-             --enable-kernel=3.2                      \
+             --enable-kernel=4.19                     \
              --enable-stack-protector=strong          \
-             --with-headers=/usr/include              \
+             --disable-nscd                           \
              libc_cv_slibdir=/usr/lib
 
 make
@@ -25,14 +22,8 @@ make install
 
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 
-cp -v ../nscd/nscd.conf /etc/nscd.conf
-mkdir -pv /var/cache/nscd
-
-install -v -Dm644 ../nscd/nscd.tmpfiles /usr/lib/tmpfiles.d/nscd.conf
-install -v -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service
-
 mkdir -pv /usr/lib/locale
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
 localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
@@ -70,17 +61,17 @@ localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
 
 make localedata/install-locales
 
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i C -f UTF-8 C.UTF-8
 localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
 
 cat > /etc/nsswitch.conf << "EOF"
 # Begin /etc/nsswitch.conf
 
-passwd: files
-group: files
-shadow: files
+passwd: files systemd
+group: files systemd
+shadow: files systemd
 
-hosts: files dns
+hosts: mymachines resolve [!UNAVAIL=return] files myhostname dns
 networks: files
 
 protocols: files
@@ -91,8 +82,7 @@ rpc: files
 # End /etc/nsswitch.conf
 EOF
 
-
-tar -xf ../../tzdata-2022g.tar.xz --strip-components=1
+tar -xf ../../tzdata2024a.tar.gz
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}

@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Acl"
+version: "2.3.2"
+
+# Build information
+build:
+  1:
+    script: "acl-pass1.sh"
+    patch: false
+

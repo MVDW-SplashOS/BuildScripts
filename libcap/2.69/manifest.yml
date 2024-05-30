@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Libcap"
+version: "2.69"
+
+# Build information
+build:
+  1:
+    script: "libcap-pass1.sh"
+    patch: false
+

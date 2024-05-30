@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Man pages"
+version: "6.06"
+
+# Build information
+build:
+  1:
+    script: "man_pages-pass1.sh"
+    patch: false
+

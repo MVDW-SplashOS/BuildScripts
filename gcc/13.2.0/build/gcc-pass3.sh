@@ -11,6 +11,7 @@ cd       build
              --enable-default-ssp     \
              --disable-multilib       \
              --disable-bootstrap      \
+             --disable-fixincludes    \
              --with-system-zlib
 make
 ulimit -s 32768
@@ -22,10 +23,12 @@ ulimit -s 32768
 make install
 
 chown -v -R root:root \
-    /usr/lib/gcc/$(gcc -dumpmachine)/12.2.0/include{,-fixed}
+    /usr/lib/gcc/$(gcc -dumpmachine)/13.2.0/include{,-fixed}
 
-ln -sfvr /usr/bin/cpp /usr/lib
-ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/12.2.0/liblto_plugin.so \
+ln -svr /usr/bin/cpp /usr/lib
+ln -sv gcc.1 /usr/share/man/man1/cc.1
+
+ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/13.2.0/liblto_plugin.so \
         /usr/lib/bfd-plugins/
 
 echo 'int main(){}' > dummy.c
@@ -37,6 +40,7 @@ grep -B4 '^ /usr/include' dummy.log
 grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g'
 grep "/lib.*/libc.so.6 " dummy.log
 grep found dummy.log
+
 rm -v dummy.c a.out dummy.log
 
 mkdir -pv /usr/share/gdb/auto-load/usr/lib

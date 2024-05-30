@@ -1,6 +1,6 @@
 ./configure --prefix=/usr    \
             --disable-static \
-            --docdir=/usr/share/doc/gettext-0.21.1
+            --docdir=/usr/share/doc/gettext-0.22.4
 
 make
 make check

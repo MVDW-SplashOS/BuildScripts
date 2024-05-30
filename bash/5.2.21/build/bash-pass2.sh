@@ -1,7 +1,7 @@
 ./configure --prefix=/usr             \
             --without-bash-malloc     \
             --with-installed-readline \
-            --docdir=/usr/share/doc/bash-5.2.15
+            --docdir=/usr/share/doc/bash-5.2.21
 
 make
 #chown -Rv tester .

@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Libxcrypt"
+version: "4.4.36"
+
+# Build information
+build:
+  1:
+    script: "libxcrypt-pass1.sh"
+    patch: false
+

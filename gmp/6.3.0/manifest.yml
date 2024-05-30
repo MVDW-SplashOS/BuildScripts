@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "GMP"
+version: "6.3.0"
+
+# Build information
+build:
+  1:
+    script: "gmp-pass1.sh"
+    patch: false
+
