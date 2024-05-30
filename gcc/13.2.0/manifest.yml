@@ -1,0 +1,32 @@
+# Basic package metadata
+package: "GCC"
+version: "13.2.0"
+
+# Dependency
+dependency:
+  list:
+    - "MPFR"
+    - "GMP"
+    - "MPC"
+  packages:
+    MPFR:
+      version: "4.2.1"
+    GMP:
+      version: "6.3.0"
+    MPC:
+      version: "1.3.1"
+
+# Build information
+build:
+  1:
+    script: "gcc-pass1.sh"
+    patch: false
+  2:
+    script: "libstdcpp-pass1.sh"
+    patch: false
+  3:
+    script: "gcc-pass2.sh"
+    patch: false
+  4:
+    script: "gcc-pass3.sh"
+    patch: false

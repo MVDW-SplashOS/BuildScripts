@@ -1,0 +1,13 @@
+# Basic package metadata
+package: "Glibc"
+version: "2.39"
+
+# Build information
+build:
+  1:
+    script: "glibc-pass1.sh"
+    patch: "fhs-1.patch"
+  2:
+    script: "glibc-pass2.sh"
+    patch: "fhs-1.patch"
+

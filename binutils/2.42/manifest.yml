@@ -1,0 +1,15 @@
+# Basic package metadata
+package: "Binutils"
+version: "2.42"
+
+# Build information
+build:
+  1:
+    script: "binutils-pass1.sh"
+    patch: false
+  2:
+    script: "binutils-pass2.sh"
+    patch: false
+  3:
+    script: "binutils-pass3.sh"
+    patch: false

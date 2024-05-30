@@ -1,0 +1,13 @@
+# Basic package metadata
+package: "Linux"
+version: "6.7.4"
+
+# Build information
+build:
+  1:
+    script: "linux-headers.sh"
+    patch: false
+  2:
+    script: "linux-pass1.sh"
+    patch: false
+
