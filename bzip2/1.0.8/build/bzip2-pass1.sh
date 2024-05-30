@@ -8,11 +8,11 @@ make
 make PREFIX=/usr install
 
 cp -av libbz2.so.* /usr/lib
-ln -sfv libbz2.so.1.0.8 /usr/lib/libbz2.so
+ln -sv libbz2.so.1.0.8 /usr/lib/libbz2.so
 
 cp -v bzip2-shared /usr/bin/bzip2
-for i in /usr/bin/{bzcat,bunzip2}; do
-  ln -sfv bzip2 $i
+for x in /usr/bin/{bzcat,bunzip2}; do
+  ln -sfv bzip2 $x
 done
 
 rm -fv /usr/lib/libbz2.a
