@@ -1,0 +1,13 @@
+# Basic package metadata
+package: "Make"
+version: "4.4.1"
+
+# Build information
+build:
+  1:
+    script: "make-pass1.sh"
+    patch: false
+  2:
+    script: "make-pass2.sh"
+    patch: false
+

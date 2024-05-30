@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Gawk"
+version: "5.3.0"
+
+# Build information
+build:
+  1:
+    script: "gawk-pass1.sh"
+    patch: false
+  2:
+    script: "gawk-pass2.sh"
+    patch: false

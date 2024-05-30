@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Xz"
+version: "5.4.6"
+
+# Build information
+build:
+  1:
+    script: "xz-pass1.sh"
+    patch: false
+  2:
+    script: "xz-pass2.sh"
+    patch: false

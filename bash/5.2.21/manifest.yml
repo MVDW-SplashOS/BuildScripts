@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Bash"
+version: "5.2.21"
+
+# Build information
+build:
+  1:
+    script: "bash-pass1.sh"
+    patch: false
+  2:
+    script: "bash-pass2.sh"
+    patch: "upstream_fixes-1.patch"

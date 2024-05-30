@@ -11,10 +11,11 @@ cd       build
     --enable-shared            \
     --enable-gprofng=no        \
     --disable-werror           \
-    --enable-64-bit-bfd
+    --enable-64-bit-bfd        \
+    --enable-default-hash-style=gnu
     
     
 make
 make DESTDIR=$splash_partition_root install
 
-rm -v $splash_partition_root/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}
+rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}

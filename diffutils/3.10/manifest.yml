@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Diffutils"
+version: "3.10"
+
+# Build information
+build:
+  1:
+    script: "diffutils-pass1.sh"
+    patch: false
+  2:
+    script: "diffutils-pass2.sh"
+    patch: false

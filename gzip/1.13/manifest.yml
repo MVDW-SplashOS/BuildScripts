@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Gzip"
+version: "1.13"
+
+# Build information
+build:
+  1:
+    script: "gzip-pass1.sh"
+    patch: false
+  2:
+    script: "gzip-pass2.sh"
+    patch: false
