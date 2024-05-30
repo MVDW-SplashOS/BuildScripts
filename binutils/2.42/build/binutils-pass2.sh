@@ -18,4 +18,4 @@ cd       build
 make
 make DESTDIR=$splash_partition_root install
 
-rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
+rm -v $splash_partition_root/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
