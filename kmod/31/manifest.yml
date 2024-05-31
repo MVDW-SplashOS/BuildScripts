@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Kmod"
+version: "31"
+
+# Build information
+build:
+  1:
+    script: "kmod-pass1.sh"
+    patch: false
+

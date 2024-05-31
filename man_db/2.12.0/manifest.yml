@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Man-DB"
+version: "2.12.0"
+
+# Build information
+build:
+  1:
+    script: "man_db-pass1.sh"
+    patch: false
+

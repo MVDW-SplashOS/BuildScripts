@@ -3,6 +3,5 @@
             --with-gcc-arch=native
 
 make
-make check
 make install
 

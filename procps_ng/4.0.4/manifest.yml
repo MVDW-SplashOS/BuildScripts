@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Procps-ng"
+version: "4.0.4"
+
+# Build information
+build:
+  1:
+    script: "procps_ng-pass1.sh"
+    patch: false
+

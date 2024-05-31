@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Autoconf"
+version: "2.72"
+
+# Build information
+build:
+  1:
+    script: "autoconf-pass1.sh"
+    patch: false
+

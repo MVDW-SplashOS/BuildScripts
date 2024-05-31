@@ -1,4 +1,4 @@
-mkdir -pv build
+mkdir -v build
 cd       build
 
 ../configure --prefix=/usr           \
@@ -20,3 +20,5 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info
 makeinfo -o      doc/com_err.info ../lib/et/com_err.texinfo
 install -v -m644 doc/com_err.info /usr/share/info
 install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info
+
+sed 's/metadata_csum_seed,//' -i /etc/mke2fs.conf

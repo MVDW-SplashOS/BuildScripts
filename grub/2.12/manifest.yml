@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "GRUB"
+version: "2.12"
+
+# Build information
+build:
+  1:
+    script: "grub-pass1.sh"
+    patch: false
+

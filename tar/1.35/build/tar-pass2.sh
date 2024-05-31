@@ -3,4 +3,4 @@ FORCE_UNSAFE_CONFIGURE=1  \
 
 make
 make install
-make -C doc install-html docdir=/usr/share/doc/tar-1.34
+make -C doc install-html docdir=/usr/share/doc/tar-1.35

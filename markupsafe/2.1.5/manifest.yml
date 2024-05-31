@@ -1,0 +1,10 @@
+# Basic package metadata
+package: " MarkupSafe"
+version: "2.1.5"
+
+# Build information
+build:
+  1:
+    script: "markupsafe-pass1.sh"
+    patch: false
+

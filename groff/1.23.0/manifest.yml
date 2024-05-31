@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Groff"
+version: "1.23.0"
+
+# Build information
+build:
+  1:
+    script: "groff-pass1.sh"
+    patch: false
+

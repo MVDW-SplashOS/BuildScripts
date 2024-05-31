@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Setuptools"
+version: "69.1.0"
+
+# Build information
+build:
+  1:
+    script: "setuptools-pass1.sh"
+    patch: false
+
