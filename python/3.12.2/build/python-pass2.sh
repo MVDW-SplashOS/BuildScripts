@@ -16,5 +16,5 @@ install -v -dm755 /usr/share/doc/python-3.12.2/html
 
 tar --no-same-owner \
     -xvf ../python_docs-3.12.2.tar.xz
-cp -R --no-preserve=mode python-3.12.2-docs-html/* \
+cp -R --no-preserve=mode python_docs-3.12.2/* \
     /usr/share/doc/python-3.12.2/html
