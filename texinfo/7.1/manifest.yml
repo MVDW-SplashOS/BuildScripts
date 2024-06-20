@@ -7,6 +7,6 @@ build:
   1:
     script: "texinfo-pass1.sh"
     patch: false
-  1:
+  2:
     script: "texinfo-pass2.sh"
     patch: false
