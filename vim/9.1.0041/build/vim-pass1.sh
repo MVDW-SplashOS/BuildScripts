@@ -29,4 +29,3 @@ endif
 " End /etc/vimrc
 EOF
 
-vim -c ':options'
