@@ -28,7 +28,7 @@ meson setup \
 ninja
 ninja install
 
-tar -xf ../../systemd-man-pages-255.tar.xz \
+tar -xf ../../systemd_man_pages-255.tar.xz \
     --no-same-owner --strip-components=1   \
     -C /usr/share/man
 
