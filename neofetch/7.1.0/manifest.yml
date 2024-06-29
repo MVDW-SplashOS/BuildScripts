@@ -1,0 +1,10 @@
+# Basic package metadata
+package: "Neofetch"
+version: "7.1.0"
+
+# Build information
+build:
+  1:
+    script: "neofetch-pass1.sh"
+    patch: "splash_logo.patch"
+
