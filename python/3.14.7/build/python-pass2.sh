@@ -15,6 +15,6 @@ EOF
 install -v -dm755 /usr/share/doc/python-3.14.7/html
 
 tar --no-same-owner \
-    -xvf ../python_docs-3.12.2.tar.xz
-cp -R --no-preserve=mode python_docs-3.12.2/* \
+    -xvf ../python_docs-3.14.7.tar.xz
+cp -R --no-preserve=mode python_docs-3.14.7/* \
     /usr/share/doc/python-3.14.7/html

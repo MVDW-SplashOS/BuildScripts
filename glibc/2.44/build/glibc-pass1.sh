@@ -2,7 +2,9 @@
 ln -sfv ../lib/ld-linux-x86-64.so.2 $splash_partition_root/lib64
 ln -sfv ../lib/ld-linux-x86-64.so.2 $splash_partition_root/lib64/ld-lsb-x86-64.so.3
 
-
+# Fix tanh(3) crashing on some old x86_64 CPUs and fix installing
+# with multiple make jobs (LFS 13.1, glibc-2.44-upstream_fixes-1)
+patch -Np1 -i ../patch/glibc-2.44-upstream_fixes-1.patch
 
 mkdir -pv build
 cd       build
@@ -13,7 +15,8 @@ echo "rootsbindir=/usr/sbin" > configparms
       --prefix=/usr                      \
       --host=$SPLASHOS_TGT                    \
       --build=$(../scripts/config.guess) \
-      --enable-kernel=4.19                \
+      --disable-nscd                     \
+      --enable-kernel=5.10               \
       --with-headers=$splash_partition_root/usr/include    \
       libc_cv_slibdir=/usr/lib
 

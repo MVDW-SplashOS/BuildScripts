@@ -1,3 +1,7 @@
+# Fix tanh(3) crashing on some old x86_64 CPUs and fix installing
+# with multiple make jobs (LFS 13.1, glibc-2.44-upstream_fixes-1)
+patch -Np1 -i ../patch/glibc-2.44-upstream_fixes-1.patch
+
 mkdir -pv build
 cd       build
 
@@ -5,7 +9,7 @@ echo "rootsbindir=/usr/sbin" > configparms
 
 ../configure --prefix=/usr                            \
              --disable-werror                         \
-             --enable-kernel=4.19                     \
+             --enable-kernel=5.10                     \
              --enable-stack-protector=strong          \
              --disable-nscd                           \
              libc_cv_slibdir=/usr/lib
@@ -82,7 +86,7 @@ rpc: files
 # End /etc/nsswitch.conf
 EOF
 
-tar -xf ../../tzdata-2024a.tar.xz --strip-components=1
+tar -xf ../../tzdata-2026c.tar.xz --strip-components=1
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}

@@ -47,7 +47,7 @@ mv /usr/share/man/man3/{Thread,Tcl_Thread}.3
 echo "SPLASH_TCL_DEBUG: 7"
 
 cd ..
-tar -xf ../tcl_docs-8.6.13.tar.xz --strip-components=1
+tar -xf ../tcl_docs-8.6.18.tar.xz --strip-components=1
 
 echo "SPLASH_TCL_DEBUG: 8"
 

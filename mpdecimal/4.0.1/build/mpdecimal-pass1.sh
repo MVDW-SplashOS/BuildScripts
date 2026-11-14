@@ -1,5 +1,6 @@
 ./configure --prefix=/usr        \
-            --disable-shared
+            --disable-static     \
+            --docdir=/usr/share/doc/mpdecimal-4.0.1
 
 make
 make install

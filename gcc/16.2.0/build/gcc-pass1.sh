@@ -24,6 +24,7 @@ cd       build
     --without-headers         \
     --enable-default-pie      \
     --enable-default-ssp      \
+    --disable-fixincludes     \
     --disable-nls             \
     --disable-shared          \
     --disable-multilib        \

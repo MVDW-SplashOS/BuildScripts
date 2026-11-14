@@ -9,22 +9,23 @@ mv -vn "mpc-1.4.1" mpc
 
 sed -e '/m64=/s/lib64/lib/' \
         -i.orig gcc/config/i386/t-linux64
-sed '/thread_header =/s/@.*@/gthr-posix.h/' \
-    -i libgcc/Makefile.in libstdc++-v3/include/Makefile.in
 
 mkdir -pv build
 cd       build
-    
-    
+
+
 ../configure                                       \
     --build=$(../config.guess)                     \
     --host=$SPLASHOS_TGT                                \
     --target=$SPLASHOS_TGT                              \
+    CXX_FOR_TARGET="$SPLASHOS_TGT-gcc -nostdinc++" \
     LDFLAGS_FOR_TARGET=-L$PWD/$SPLASHOS_TGT/libgcc      \
+    target_configargs=gcc_cv_target_thread_file=posix \
     --prefix=/usr                                  \
     --with-build-sysroot=$splash_partition_root                      \
     --enable-default-pie                           \
     --enable-default-ssp                           \
+    --disable-fixincludes                          \
     --disable-nls                                  \
     --disable-multilib                             \
     --disable-libatomic                            \

@@ -11,6 +11,11 @@
 make
 make DESTDIR=$PWD/dest install
 
+# The INPUT linker scripts below are only safe with curses.h edited to
+# always use the wide-character ABI (LFS 8.33)
+sed -e 's/^#if.*XOPEN.*$/#if 1/' \
+    -i dest/usr/include/curses.h
+
 install -vm755 dest/usr/lib/libncursesw.so.6.6 /usr/lib
 
 rm -v  dest/usr/lib/libncursesw.so.6.6
