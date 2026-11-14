@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Linux"
+version: "7.1.8"
+
+# Build information
+build:
+  1:
+    script: "linux-headers.sh"
+    patch: false
+  2:
+    script: "linux-pass1.sh"
+    patch: "splash_kernel.patch"

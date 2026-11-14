@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Automake"
+version: "1.18.1"
+
+# Build information
+build:
+  1:
+    script: "automake-pass1.sh"
+    patch: false

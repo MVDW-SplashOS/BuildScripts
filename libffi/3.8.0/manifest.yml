@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libffi"
+version: "3.8.0"
+
+# Build information
+build:
+  1:
+    script: "libffi-pass1.sh"
+    patch: false

@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "mpdecimal"
+version: "4.0.1"
+
+# Build information
+build:
+  1:
+    script: "mpdecimal-pass1.sh"
+    patch: false
+  2:
+    script: "mpdecimal-pass2.sh"
+    patch: false

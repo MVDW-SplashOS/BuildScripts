@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Sed"
+version: "4.10"
+
+# Build information
+build:
+  1:
+    script: "sed-pass1.sh"
+    patch: false
+  2:
+    script: "sed-pass1.sh"
+    patch: false

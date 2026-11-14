@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "MPFR"
+version: "4.2.2"
+
+# Build information
+build:
+  1:
+    script: "mpfr-pass1.sh"
+    patch: false

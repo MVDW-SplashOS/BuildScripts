@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libpipeline"
+version: "1.5.8"
+
+# Build information
+build:
+  1:
+    script: "libpipeline-pass1.sh"
+    patch: false

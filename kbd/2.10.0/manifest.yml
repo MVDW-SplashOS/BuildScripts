@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Kbd"
+version: "2.10.0"
+
+# Build information
+build:
+  1:
+    script: "kbd-pass1.sh"
+    patch: "backspace-1.patch"

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Flit-Core"
+version: "4.0.2"
+
+# Build information
+build:
+  1:
+    script: "flit_core-pass1.sh"
+    patch: false

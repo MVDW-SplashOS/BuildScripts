@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Util-Linux"
+version: "2.42.2"
+
+# Build information
+build:
+  1:
+    script: "util_linux-pass1.sh"
+    patch: false
+  2:
+    script: "util_linux-pass2.sh"
+    patch: false

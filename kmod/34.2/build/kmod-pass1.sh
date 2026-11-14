@@ -1,0 +1,20 @@
+mkdir -pv build
+cd       build
+
+meson setup                       \
+      --prefix=/usr               \
+      --buildtype=release         \
+      -D manpages=false           \
+      ..
+
+ninja
+
+ninja install
+
+cd ..
+
+for target in depmod insmod modinfo modprobe rmmod; do
+  ln -sfv ../bin/kmod /usr/sbin/$target
+done
+
+ln -sfv kmod /usr/bin/lsmod

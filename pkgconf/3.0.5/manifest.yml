@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Pkgconf"
+version: "3.0.5"
+
+# Build information
+build:
+  1:
+    script: "pkgconf-pass1.sh"
+    patch: false

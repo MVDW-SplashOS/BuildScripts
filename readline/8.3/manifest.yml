@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Readline"
+version: "8.3"
+
+# Build information
+build:
+  1:
+    script: "readline-pass1.sh"
+    patch: "upstream_fixes-3.patch"

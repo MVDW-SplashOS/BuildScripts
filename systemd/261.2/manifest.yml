@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Systemd"
+version: "261.2"
+
+# Build information
+build:
+  1:
+    script: "systemd-pass1.sh"
+    patch: "upstream_fixes-1.patch"

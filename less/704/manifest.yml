@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Less"
+version: "704"
+
+# Build information
+build:
+  1:
+    script: "less-pass1.sh"
+    patch: false

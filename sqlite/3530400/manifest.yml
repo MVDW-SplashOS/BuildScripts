@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Sqlite"
+version: "3530400"
+
+# Build information
+build:
+  1:
+    script: "sqlite-pass1.sh"
+    patch: false
