@@ -1,6 +1,9 @@
 sed -i -e 's/GROUP="render"/GROUP="video"/' \
        -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in
 
+# meson needs /etc/os-release to exist (LFS 8.77)
+echo 'NAME="Linux From Scratch"' > /etc/os-release
+
 mkdir -p build
 cd       build
 

@@ -1,15 +1,10 @@
-./configure --prefix=/usr                        \
-            --sysconfdir=/etc                    \
-            --localstatedir=/var                 \
-            --runstatedir=/run                   \
-            --enable-user-session                \
-            --disable-static                     \
-            --disable-doxygen-docs               \
-            --disable-xml-docs                   \
-            --docdir=/usr/share/doc/dbus-1.16.2 \
-            --with-system-socket=/run/dbus/system_bus_socket
+# D-Bus uses meson since 1.16; there is no autoconf configure anymore (LFS 8.78)
+mkdir build
+cd    build
 
-make
-make install
+meson setup --prefix=/usr --buildtype=release --wrap-mode=nofallback ..
+
+ninja
+ninja install
 
 ln -sfv /etc/machine-id /var/lib/dbus

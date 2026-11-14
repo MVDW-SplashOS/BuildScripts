@@ -6,5 +6,5 @@ version: "5.45.4"
 build:
   1:
     script: "expect-pass1.sh"
-    patch: false
+    patch: "gcc15-1.patch"
 

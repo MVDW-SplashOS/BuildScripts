@@ -1,3 +1,6 @@
+# Compatibility with gcc-15 and later (LFS 8.23)
+sed -i '/long long t1;/,+1s/()/(...)/' configure
+
 ./configure --prefix=/usr    \
             --enable-cxx     \
             --disable-static \

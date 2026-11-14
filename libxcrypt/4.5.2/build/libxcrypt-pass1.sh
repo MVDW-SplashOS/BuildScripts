@@ -1,3 +1,6 @@
+# Fix required by glibc-2.43 and later (LFS 8.29)
+sed -i '/strchr/s/const//' lib/crypt-{sm3,gost}-yescrypt.c
+
 ./configure --prefix=/usr                \
             --enable-hashes=strong,glibc \
             --enable-obsolete-api=no     \
