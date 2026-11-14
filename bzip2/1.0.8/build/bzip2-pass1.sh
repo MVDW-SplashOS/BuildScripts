@@ -8,7 +8,10 @@ make
 make PREFIX=/usr install
 
 cp -av libbz2.so.* /usr/lib
-ln -sv libbz2.so.1.0.8 /usr/lib/libbz2.so
+ln -sfv libbz2.so.1.0.8 /usr/lib/libbz2.so
+
+# Compatibility symlink: some apps (e.g. Kbd) expect libbz2.so.1 (LFS 8.7)
+ln -sfv libbz2.so.1.0.8 /usr/lib/libbz2.so.1
 
 cp -v bzip2-shared /usr/bin/bzip2
 for x in /usr/bin/{bzcat,bunzip2}; do

@@ -6,5 +6,5 @@ make
 make check
 make install
 
-ln -sv flex   /usr/bin/lex
-ln -sv flex.1 /usr/share/man/man1/lex.1
+ln -sfv flex   /usr/bin/lex
+ln -sfv flex.1 /usr/share/man/man1/lex.1

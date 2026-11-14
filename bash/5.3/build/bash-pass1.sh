@@ -5,4 +5,4 @@
 
 make
 make DESTDIR=$splash_partition_root install
-ln -sv bash $splash_partition_root/bin/sh
+ln -sfv bash $splash_partition_root/bin/sh

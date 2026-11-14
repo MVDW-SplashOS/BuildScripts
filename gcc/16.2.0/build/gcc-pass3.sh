@@ -27,8 +27,8 @@ make install
 chown -v -R root:root \
     /usr/lib/gcc/$(gcc -dumpmachine)/16.2.0/include{,-fixed}
 
-ln -svr /usr/bin/cpp /usr/lib
-ln -sv gcc.1 /usr/share/man/man1/cc.1
+ln -sfrv /usr/bin/cpp /usr/lib
+ln -sfv gcc.1 /usr/share/man/man1/cc.1
 
 ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/16.2.0/liblto_plugin.so \
         /usr/lib/bfd-plugins/

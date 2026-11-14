@@ -39,4 +39,4 @@ cd       build
 make
 make DESTDIR=$splash_partition_root install
 
-ln -sv gcc $splash_partition_root/usr/bin/cc
+ln -sfv gcc $splash_partition_root/usr/bin/cc
