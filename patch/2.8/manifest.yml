@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "Patch"
+version: "2.8"
+
+# Build information
+build:
+  1:
+    script: "patch-pass1.sh"
+    patch: false
+  2:
+    script: "patch-pass2.sh"
+    patch: false
