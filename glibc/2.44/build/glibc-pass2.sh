@@ -63,7 +63,9 @@ localedef -i zh_CN -f GB18030 zh_CN.GB18030
 localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS
 localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
 
-make localedata/install-locales
+# The book warns glibc may fail under parallel make; with many cores and
+# limited RAM, concurrent localedef processes crash (SIGSEGV). Serialize it.
+make -j1 localedata/install-locales
 
 localedef -i C -f UTF-8 C.UTF-8
 localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
