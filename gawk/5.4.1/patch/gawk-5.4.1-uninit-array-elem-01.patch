@@ -1,0 +1,29 @@
+Submitted By:            SplashBuilder
+Date:                    2026-11-15
+Initial Package Version: 5.4.1
+Upstream Status:         Fixed upstream in gawk-5.4-stable (commit bf85f8a31),
+                         not yet in a release. See bug-gawk 2026-09 msg00086
+                         and 2026-07 msg00027.
+Origin:                  Upstream fix (reconstructed as the single-line removal
+                         Arnold Robbins confirmed as the correct fix)
+Description:             gawk 5.4.1 built without MPFR/GMP: an array element
+                         that does not exist yet, once tested in a comparison
+                         (if (a["x"] == "") ...), reads back as the string "0"
+                         instead of "" when used in string context.
+                         This corrupts GCC 16.2's option generation
+                         (gcc/optc-gen.awk), producing options.cc with
+                           #error 0W<optname> does not have a Var() flag
+                         (75 occurrences) and failing the GCC build at
+                         options.o.
+
+diff -Naur gawk-5.4.1.orig/awk.h gawk-5.4.1/awk.h
+--- gawk-5.4.1.orig/awk.h	2026-11-15 09:57:25.092000000 +0100
++++ gawk-5.4.1/awk.h	2026-11-15 09:57:25.128000000 +0100
+@@ -2049,7 +2049,6 @@
+ 
+ 	if ((s->flags & STRCUR) != 0
+ 		&& (s->stfmt == STFMT_UNUSED || (s->stfmt == fmtidx
+-						&& (s->flags & (CONVFMT_FMT|OFMT_FMT)) == fmtflag
+ #ifdef HAVE_MPFR
+ 						&& s->strndmode == MPFR_round_mode
+ #endif

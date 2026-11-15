@@ -3,10 +3,15 @@ package: "Gawk"
 version: "5.4.1"
 
 # Build information
+# 1/2: gawk-5.4.1-uninit-array-elem-01.patch fixes the upstream gawk 5.4.1 bug
+# (built without MPFR/GMP) where an array element created by a comparison
+# reads back as "0" instead of "". Without it GCC 16.2's optc-gen.awk
+# generates options.cc with "#error 0W<opt> does not have a Var() flag" and
+# the GCC build fails at options.o.
 build:
   1:
     script: "gawk-pass1.sh"
-    patch: false
+    patch: "gawk-5.4.1-uninit-array-elem-01.patch"
   2:
     script: "gawk-pass2.sh"
-    patch: false
+    patch: "gawk-5.4.1-uninit-array-elem-01.patch"
