@@ -7,10 +7,11 @@ name: Deploy source packages (syspkg)
 # prepare/dependencies.sh assumes the ORIGIN has the new file).
 #
 # Required repo secrets:
-#   SPLASHOS_SFTP_USER      - SFTP login for iloot.it
-#   SPLASHOS_SFTP_PASSWORD  - SFTP password for iloot.it
-# (SourceStream's file/push.py authenticates with user+password over
-# paramiko; if you later switch to key auth, update push.py accordingly.)
+#   SPLASHOS_SFTP_USER          - SFTP login for iloot.it
+#   SPLASHOS_SFTP_PRIVATE_KEY   - OpenSSH private key for that login (public
+#                                 half must be in the server's authorized_keys)
+# SourceStream's file/push.py authenticates with a private key (set via the
+# "keyfile" push.sftp option); password auth remains available as a fallback.
 
 on:
   push:
@@ -74,6 +75,25 @@ jobs:
       if: steps.changed_packages.outputs.packages != ''
       run: pip install '--only-binary=:all:' -r SourceStream/requirements-lock.txt
 
+    - name: Write SFTP private key
+      if: steps.changed_packages.outputs.packages != ''
+      env:
+        SFTP_KEY: ${{ secrets.SPLASHOS_SFTP_PRIVATE_KEY }}
+      run: |
+        if [ -z "$SFTP_KEY" ]; then
+          echo "::error::Secret SPLASHOS_SFTP_PRIVATE_KEY is not set."
+          exit 1
+        fi
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+        printf '%s\n' "$SFTP_KEY" > ~/.ssh/splashos_sftp_key
+        chmod 600 ~/.ssh/splashos_sftp_key
+        # Fail early (with a clear message) if the stored key is malformed
+        if ! ssh-keygen -y -f ~/.ssh/splashos_sftp_key > /dev/null; then
+          echo "::error::SPLASHOS_SFTP_PRIVATE_KEY is not a valid OpenSSH private key."
+          exit 1
+        fi
+
     - name: Configure SourceStream push target
       if: steps.changed_packages.outputs.packages != ''
       working-directory: SourceStream
@@ -81,8 +101,10 @@ jobs:
         SFTP_HOST: iloot.it
         SFTP_PORT: 221
         SFTP_USER: ${{ secrets.SPLASHOS_SFTP_USER }}
-        SFTP_PASSWORD: ${{ secrets.SPLASHOS_SFTP_PASSWORD }}
-        SFTP_PATH: /var/www/splashos_syspkg/source-packages
+        SFTP_KEYFILE: /home/runner/.ssh/splashos_sftp_key
+        # splashos_git is chrooted to /var/www on the server, so /var/www/... 
+        # is seen as /... from the SFTP session.
+        SFTP_PATH: /splashos_syspkg/source-packages
       run: |
         python - <<'EOF'
         import os, yaml
@@ -94,7 +116,7 @@ jobs:
                 "host": os.environ["SFTP_HOST"],
                 "port": int(os.environ["SFTP_PORT"]),
                 "username": os.environ["SFTP_USER"],
-                "password": os.environ["SFTP_PASSWORD"],
+                "keyfile": os.environ["SFTP_KEYFILE"],
                 "path": os.environ["SFTP_PATH"],
             },
         }
@@ -102,7 +124,7 @@ jobs:
             yaml.safe_dump(config, f, default_flow_style=False)
         print("push target:", config["push"]["type"],
               config["push"]["sftp"]["host"] + ":" + str(config["push"]["sftp"]["port"]),
-              config["push"]["sftp"]["path"])
+              config["push"]["sftp"]["path"], "(key auth)")
         EOF
 
     - name: Pin SFTP host key
@@ -110,9 +132,15 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         chmod 700 ~/.ssh
-        ssh-keyscan -p 221 iloot.it >> ~/.ssh/known_hosts
         # paramiko's default policy rejects unknown hosts; SourceStream's
         # push.py loads the system known_hosts, so the pin must exist.
+        if ! ssh-keyscan -T 15 -p 221 iloot.it >> ~/.ssh/known_hosts; then
+          echo "::error::ssh-keyscan could not reach iloot.it:221 from this runner."
+          echo "::error::It works from other networks? Then the server firewall is likely"
+          echo "::error::blocking GitHub Actions IPs. Allowlist them (dynamic ranges from"
+          echo "::error::https://api.github.com/meta -> \"actions\") or open port 221 to all."
+          exit 1
+        fi
 
     - name: Repack and push changed packages
       if: steps.changed_packages.outputs.packages != ''
