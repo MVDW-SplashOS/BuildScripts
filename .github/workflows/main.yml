@@ -72,7 +72,7 @@ jobs:
 
     - name: Install SourceStream dependencies
       if: steps.changed_packages.outputs.packages != ''
-      run: pip install -r SourceStream/requirements.txt
+      run: pip install '--only-binary=:all:' -r SourceStream/requirements-lock.txt
 
     - name: Configure SourceStream push target
       if: steps.changed_packages.outputs.packages != ''
