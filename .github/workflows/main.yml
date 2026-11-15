@@ -1,39 +1,144 @@
-name: Deploy Package
+name: Deploy source packages (syspkg)
+
+# On every push to main, repack the changed packages through SourceStream and
+# push the resulting source-package tarballs to the syspkg origin over SFTP,
+# so a fixed build script is servable immediately afterwards (see the
+# diffutils/CDN note in the SplashBuilder AGENTS.md: the cache-busting in
+# prepare/dependencies.sh assumes the ORIGIN has the new file).
+#
+# Required repo secrets:
+#   SPLASHOS_SFTP_USER      - SFTP login for iloot.it
+#   SPLASHOS_SFTP_PASSWORD  - SFTP password for iloot.it
+# (SourceStream's file/push.py authenticates with user+password over
+# paramiko; if you later switch to key auth, update push.py accordingly.)
 
 on:
   push:
     branches:
       - main
 
+concurrency:
+  group: deploy-source-packages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2
-      
-    - name: Get List of Changed Folders
+      uses: actions/checkout@v4
+      with:
+        # Full history so the diff against github.event.before always works
+        fetch-depth: 0
+
+    - name: Get List of Changed Packages
       id: changed_packages
       run: |
-        changed_packages=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | awk -F/ '{print $1}' | uniq)
-        echo "::set-output name=changed_packages::$changed_packages"
-        
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.11
+        before="${{ github.event.before }}"
+        # New branch / first push: the before-sha doesn't exist locally.
+        if [ -z "$before" ] || ! git cat-file -e "$before^{commit}" 2>/dev/null; then
+          before="HEAD~1"
+          echo "No previous commit known, falling back to $before"
+        fi
 
-    - name: Get SourceStream
-      run: |
-        git clone https://github.com/MVDW-SplashOS/SourceStream.git
-      working-directory: ${{ github.workspace }}
-
-    - name: Run Python Script
-      run: |
-        cd SourceStream  # Change to the directory of the downloaded repo
-        for package in ${{ steps.changed_packages.outputs.changed_packages }}; do
-          if [ -d "$package" ]; then
-            python run.py p:$folder
+        # Top-level folders of BuildScripts are the package names; keep only
+        # folders that actually contain a manifest.yml (filters out .github,
+        # README.md, etc.)
+        packages=""
+        for pkg in $(git diff --name-only "$before" "$GITHUB_SHA" | awk -F/ '{print $1}' | sort -u); do
+          if [ -d "$pkg" ] && find "$pkg" -name manifest.yml | grep -q .; then
+            packages="$packages $pkg"
           fi
         done
+
+        packages="${packages# }"
+        echo "Changed packages:${packages:- <none>}"
+        echo "packages=$packages" >> "$GITHUB_OUTPUT"
+
+    - name: Set up Python
+      if: steps.changed_packages.outputs.packages != ''
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Get SourceStream
+      if: steps.changed_packages.outputs.packages != ''
+      run: |
+        git clone --depth 1 https://github.com/MVDW-SplashOS/SourceStream.git
+
+    - name: Install SourceStream dependencies
+      if: steps.changed_packages.outputs.packages != ''
+      run: pip install -r SourceStream/requirements.txt
+
+    - name: Configure SourceStream push target
+      if: steps.changed_packages.outputs.packages != ''
+      working-directory: SourceStream
+      env:
+        SFTP_HOST: iloot.it
+        SFTP_PORT: 221
+        SFTP_USER: ${{ secrets.SPLASHOS_SFTP_USER }}
+        SFTP_PASSWORD: ${{ secrets.SPLASHOS_SFTP_PASSWORD }}
+        SFTP_PATH: /var/www/splashos_syspkg/source-packages
+      run: |
+        python - <<'EOF'
+        import os, yaml
+        with open("config.yml") as f:
+            config = yaml.safe_load(f)
+        config["push"] = {
+            "type": "sftp",
+            "sftp": {
+                "host": os.environ["SFTP_HOST"],
+                "port": int(os.environ["SFTP_PORT"]),
+                "username": os.environ["SFTP_USER"],
+                "password": os.environ["SFTP_PASSWORD"],
+                "path": os.environ["SFTP_PATH"],
+            },
+        }
+        with open("config.yml", "w") as f:
+            yaml.safe_dump(config, f, default_flow_style=False)
+        print("push target:", config["push"]["type"],
+              config["push"]["sftp"]["host"] + ":" + str(config["push"]["sftp"]["port"]),
+              config["push"]["sftp"]["path"])
+        EOF
+
+    - name: Pin SFTP host key
+      if: steps.changed_packages.outputs.packages != ''
+      run: |
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+        ssh-keyscan -p 221 iloot.it >> ~/.ssh/known_hosts
+        # paramiko's default policy rejects unknown hosts; SourceStream's
+        # push.py loads the system known_hosts, so the pin must exist.
+
+    - name: Repack and push changed packages
+      if: steps.changed_packages.outputs.packages != ''
+      working-directory: SourceStream
+      run: |
+        # One run.py invocation per package: SourceStream clones BuildScripts,
+        # downloads the upstream source, repacks it with manifest.yml/build/
+        # patch/ and SFTPs it to source-packages/<pkg>/<pkg>-<ver>.tar.xz.
+        # Per-package invocations isolate failures: one broken package does
+        # not block pushing the others, but the job still fails at the end.
+        failed=""
+        for package in ${{ steps.changed_packages.outputs.packages }}; do
+          echo "::group::Repack+push $package"
+          if ! python run.py "p:$package"; then
+            failed="$failed $package"
+          fi
+          echo "::endgroup::"
+        done
+
+        if [ -n "$failed" ]; then
+          echo "::error::Failed to deploy packages:$failed"
+          exit 1
+        fi
+        {
+          echo "### Deployed source packages"
+          for package in ${{ steps.changed_packages.outputs.packages }}; do
+            echo "- \`$package\`"
+          done
+        } >> "$GITHUB_STEP_SUMMARY"
