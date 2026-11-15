@@ -12,4 +12,7 @@ sed 's/--image-base/--nonexist-linker-option/' -i configure
             
 make
 make install
-mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions
+
+# No post-install mv needed: grub >= 2.12 installs bash completions directly
+# to /usr/share/bash-completion/completions (the old /etc/bash_completion.d
+# location is gone, LFS r13.1 has no mv step either).
