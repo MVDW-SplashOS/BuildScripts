@@ -1,4 +1,8 @@
-autoreconf -fiv
+# LFS r13.1: the i18n patch modifies the build system; autoreconf must NOT use
+# -i here (configure.ac pins an old gettext version), and automake -af must
+# follow to update the auxiliary files.
+autoreconf -fv
+automake -af
 FORCE_UNSAFE_CONFIGURE=1 ./configure \
             --prefix=/usr            \
             --enable-no-install-program=kill,uptime

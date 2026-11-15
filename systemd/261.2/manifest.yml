@@ -6,4 +6,9 @@ version: "261.2"
 build:
   1:
     script: "systemd-pass1.sh"
-    patch: "upstream_fixes-1.patch"
+    # upstream_fixes-1.patch was written for 255 (CVE-2023-7008 + an
+    # systemd-analyze verify fix). Both are already in 261.2 upstream
+    # (find_unit_directory present in analyze-verify-util.c; the resolved
+    # transaction code was refactored), so the patch no longer applies
+    # (2 of its hunks fail). LFS r13.1 ships no systemd patch either.
+    patch: false

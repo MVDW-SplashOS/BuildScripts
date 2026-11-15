@@ -1,6 +1,6 @@
 # Fix tanh(3) crashing on some old x86_64 CPUs and fix installing
-# with multiple make jobs (LFS 13.1, glibc-2.44-upstream_fixes-1)
-patch -Np1 -i ../patch/glibc-2.44-upstream_fixes-1.patch
+# with multiple make jobs (LFS r13.1, glibc-2.44-upstream_fixes-4)
+patch -Np1 -i ../patch/glibc-2.44-upstream_fixes-4.patch
 
 mkdir -pv build
 cd       build
