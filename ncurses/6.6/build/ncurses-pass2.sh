@@ -19,7 +19,11 @@ sed -e 's/^#if.*XOPEN.*$/#if 1/' \
 install -vm755 dest/usr/lib/libncursesw.so.6.6 /usr/lib
 
 rm -v  dest/usr/lib/libncursesw.so.6.6
-cp -av dest/* /
+# --remove-destination: cp stats the destination before copying, and a stale
+# self-referential terminfo symlink (e.g. left by an interrupted/older pass1)
+# makes that stat fail with ELOOP ("Too many levels of symbolic links"),
+# aborting the install under set -e. Removing the destination first is immune.
+cp -av --remove-destination dest/* /
 
 for lib in ncurses form panel menu ; do
     rm -vf                    /usr/lib/lib${lib}.so
