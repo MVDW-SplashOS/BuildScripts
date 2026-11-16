@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Dracut"
+version: "112"
+
+# Build information
+build:
+  1:
+    script: "dracut.sh"
+    patch: "splash-sysusers-deps-1.patch"

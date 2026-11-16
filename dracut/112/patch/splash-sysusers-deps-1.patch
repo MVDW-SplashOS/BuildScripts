@@ -1,0 +1,87 @@
+diff -ruN a/modules.d/11systemd-hostnamed/module-setup.sh b/modules.d/11systemd-hostnamed/module-setup.sh
+--- a/modules.d/11systemd-hostnamed/module-setup.sh	2026-11-16 12:53:14.848000000 +0100
++++ b/modules.d/11systemd-hostnamed/module-setup.sh	2026-11-16 12:53:14.852000000 +0100
+@@ -20,7 +20,9 @@
+ depends() {
+ 
+     # This module has external dependency on other module(s).
+-    echo systemd-sysusers
++    if [[ -x ${dracutsysrootdir-}/usr/bin/systemd-sysusers ]]; then
++        echo systemd-sysusers
++    fi
+     # Return 0 to include the dependent module(s) in the initramfs.
+     return 0
+ 
+diff -ruN a/modules.d/11systemd-journald/module-setup.sh b/modules.d/11systemd-journald/module-setup.sh
+--- a/modules.d/11systemd-journald/module-setup.sh	2026-11-16 12:53:14.848000000 +0100
++++ b/modules.d/11systemd-journald/module-setup.sh	2026-11-16 12:53:14.852000000 +0100
+@@ -20,7 +20,10 @@
+ depends() {
+ 
+     # This module has external dependency on other module(s).
+-    echo systemd systemd-sysusers
++    echo systemd
++    if [[ -x ${dracutsysrootdir-}/usr/bin/systemd-sysusers ]]; then
++        echo systemd-sysusers
++    fi
+     # Return 0 to include the dependent module(s) in the initramfs.
+     return 0
+ 
+diff -ruN a/modules.d/11systemd-resolved/module-setup.sh b/modules.d/11systemd-resolved/module-setup.sh
+--- a/modules.d/11systemd-resolved/module-setup.sh	2026-11-16 12:53:14.848000000 +0100
++++ b/modules.d/11systemd-resolved/module-setup.sh	2026-11-16 12:53:14.852000000 +0100
+@@ -20,7 +20,9 @@
+ depends() {
+ 
+     # This module has external dependency on other module(s).
+-    echo systemd-sysusers
++    if [[ -x ${dracutsysrootdir-}/usr/bin/systemd-sysusers ]]; then
++        echo systemd-sysusers
++    fi
+     # Return 0 to include the dependent module(s) in the initramfs.
+     return 0
+ 
+diff -ruN a/modules.d/11systemd-timesyncd/module-setup.sh b/modules.d/11systemd-timesyncd/module-setup.sh
+--- a/modules.d/11systemd-timesyncd/module-setup.sh	2026-11-16 12:53:14.848000000 +0100
++++ b/modules.d/11systemd-timesyncd/module-setup.sh	2026-11-16 12:53:14.852000000 +0100
+@@ -20,7 +20,9 @@
+ depends() {
+ 
+     # This module has external dependency on other module(s).
+-    echo systemd-sysusers systemd-timedated
++    if [[ -x ${dracutsysrootdir-}/usr/bin/systemd-sysusers ]]; then
++        echo systemd-sysusers systemd-timedated
++    fi
+     # Return 0 to include the dependent module(s) in the initramfs.
+     return 0
+ 
+diff -ruN a/modules.d/16dbus-broker/module-setup.sh b/modules.d/16dbus-broker/module-setup.sh
+--- a/modules.d/16dbus-broker/module-setup.sh	2026-11-16 12:53:14.848000000 +0100
++++ b/modules.d/16dbus-broker/module-setup.sh	2026-11-16 12:53:14.852000000 +0100
+@@ -18,7 +18,10 @@
+ # Module dependency requirements.
+ depends() {
+     # This module has external dependency on the systemd module.
+-    echo systemd systemd-sysusers
++    echo systemd
++    if [[ -x ${dracutsysrootdir-}/usr/bin/systemd-sysusers ]]; then
++        echo systemd-sysusers
++    fi
+     # Return 0 to include the dependent systemd module in the initramfs.
+     return 0
+ 
+diff -ruN a/modules.d/73tpm2-tss/module-setup.sh b/modules.d/73tpm2-tss/module-setup.sh
+--- a/modules.d/73tpm2-tss/module-setup.sh	2026-11-16 12:53:14.848000000 +0100
++++ b/modules.d/73tpm2-tss/module-setup.sh	2026-11-16 12:53:14.856000000 +0100
+@@ -17,7 +17,10 @@
+ depends() {
+ 
+     # This module has external dependency on other module(s).
+-    echo systemd-sysusers systemd-udevd
++    echo systemd-udevd
++    if [[ -x ${dracutsysrootdir-}/usr/bin/systemd-sysusers ]]; then
++        echo systemd-sysusers
++    fi
+     # Return 0 to include the dependent module(s) in the initramfs.
+     return 0
+ 

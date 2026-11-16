@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Cpio"
+version: "2.15"
+
+# Build information
+build:
+  1:
+    script: "cpio.sh"
+    patch: false
