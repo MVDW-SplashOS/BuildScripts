@@ -69,7 +69,7 @@ jobs:
     - name: Get SourceStream
       if: steps.changed_packages.outputs.packages != ''
       run: |
-        git clone --depth 1 https://github.com/MVDW-SplashOS/SourceStream.git
+        git clone --depth 1 --recurse-submodules --shallow-submodules https://github.com/MVDW-SplashOS/SourceStream.git
 
     - name: Install SourceStream dependencies
       if: steps.changed_packages.outputs.packages != ''
