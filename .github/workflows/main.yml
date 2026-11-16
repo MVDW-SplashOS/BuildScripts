@@ -75,7 +75,7 @@ jobs:
       if: steps.changed_packages.outputs.packages != ''
       # --require-hashes enforces the hash-pinned lock file (pip verifies every
       # download against requirements-lock.txt); also satisfies Sonar S8544.
-      run: pip install --require-hashes --only-binary :all: -r SourceStream/requirements-lock.txt
+      run: pip install --require-hashes '--only-binary=:all:' -r SourceStream/requirements-lock.txt
 
     - name: Write SFTP private key
       if: steps.changed_packages.outputs.packages != ''
