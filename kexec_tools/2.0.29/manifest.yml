@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Kexec Tools"
+version: "2.0.29"
+
+# Build information
+build:
+  1:
+    script: "kexec_tools.sh"
+    patch: false

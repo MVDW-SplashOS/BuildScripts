@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Efibootmgr"
+version: "18"
+
+# Build information
+build:
+  1:
+    script: "efibootmgr.sh"
+    patch: false

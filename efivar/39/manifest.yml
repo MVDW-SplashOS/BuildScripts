@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Efivar"
+version: "39"
+
+# Build information
+build:
+  1:
+    script: "efivar.sh"
+    patch: false

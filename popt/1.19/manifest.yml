@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Popt"
+version: "1.19"
+
+# Build information
+build:
+  1:
+    script: "popt.sh"
+    patch: false
