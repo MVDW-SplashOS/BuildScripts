@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Rust"
+version: "1.100.0"
+
+# Build information
+build:
+  1:
+    script: "rust.sh"
+    patch: false
