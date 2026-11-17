@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libsass"
+version: "3.6.5"
+
+# Build information
+build:
+  1:
+    script: "libsass.sh"
+    patch: false
