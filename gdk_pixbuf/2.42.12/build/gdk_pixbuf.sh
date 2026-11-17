@@ -7,6 +7,7 @@ meson setup build \
     -Dinstalled_tests=false \
     -Ddocs=false \
     -Dintrospection=disabled \
+    -Dgio_sniffing=false \
     -Dpng=enabled \
     -Djpeg=disabled \
     -Dtiff=disabled \
