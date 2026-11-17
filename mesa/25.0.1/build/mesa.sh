@@ -24,6 +24,11 @@ sed -i 's/^  if with_platform_android$/  if true/' meson.build
 sed -i 's|pthread_cond_timedwait(&cond->cond, mtx, abs_time)|pthread_cond_timedwait(\&cond->cond, (pthread_mutex_t *)mtx, abs_time)|' src/util/cnd_monotonic.c
 sed -i 's|pthread_cond_wait(&cond->cond, mtx)|pthread_cond_wait(\&cond->cond, (pthread_mutex_t *)mtx)|' src/util/cnd_monotonic.c
 
+# Same union/type mismatch in egl_dri2.c: the only pthread call on a C11
+# cnd_t in the tree (the rest of the file uses the C11 API, and glibc's
+# own C11 wrappers cast the union the same way).
+sed -i 's|pthread_cond_init(&dri2_sync->cond, &attr)|pthread_cond_init((pthread_cond_t *)\&dri2_sync->cond, \&attr)|' src/egl/drivers/dri2/egl_dri2.c
+
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
