@@ -64,7 +64,9 @@ jobs:
       if: steps.changed_packages.outputs.packages != ''
       uses: actions/setup-python@v5
       with:
-        python-version: "3.11"
+        # SourceStream uses Python 3.12+ f-string syntax (nested same-quote
+        # interpolation, PEP 701) throughout; 3.11 fails at import.
+        python-version: "3.13"
 
     - name: Get SourceStream
       if: steps.changed_packages.outputs.packages != ''
