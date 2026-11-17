@@ -7,3 +7,9 @@ export CARGO_HOME="$PWD/.cargo-home"
 cargo build --release --offline
 
 install -v -m755 target/release/splash-boot-manager /usr/bin/
+
+# Boot logo: the animated asset is displayed by the graphical UI, the
+# SPLASHLOGO1 raw asset is blitted pre-graphically by /usr/bin/splash-logo
+# (single static frame: the screen keeps it until kexec replaces it).
+install -v -m644 assets/boot-logo.gif assets/boot-logo.raw /usr/share/splashos/
+gcc -O2 -o /usr/bin/splash-logo splash-logo.c
