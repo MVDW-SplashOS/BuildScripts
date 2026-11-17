@@ -1,11 +1,12 @@
-# wlroots - meson build. Session backend: seatd (libseat). Renderers:
-# GLES2 only (mesa softpipe provides libGLESv2). DRM + headless backends;
-# x11 and xwayland excluded (wayland-only boot manager).
+# wlroots - meson build. Session backend: seatd (libseat). Renderer:
+# GLES2 only (mesa provides libGLESv2). DRM backend only - the headless
+# backend is compiled in unconditionally in 0.17 (not a meson choice),
+# and x11/xwayland are excluded (wayland-only boot manager).
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Drenderers=gles2 \
-    -Dbackends=drm,headless \
+    -Dbackends=drm \
     -Dxwayland=disabled \
     -Dexamples=false
 
