@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Hwdata"
+version: "0.390"
+
+# Build information
+build:
+  1:
+    script: "hwdata.sh"
+    patch: false

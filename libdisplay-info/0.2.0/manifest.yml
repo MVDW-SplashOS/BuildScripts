@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libdisplay-info"
+version: "0.2.0"
+
+# Build information
+build:
+  1:
+    script: "libdisplay-info.sh"
+    patch: false
