@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Dejavu-fonts-ttf"
+version: "2.37"
+
+# Build information
+build:
+  1:
+    script: "dejavu_fonts.sh"
+    patch: false
