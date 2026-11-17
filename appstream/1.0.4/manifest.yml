@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Appstream"
+version: "1.0.4"
+
+# Build information
+build:
+  1:
+    script: "appstream.sh"
+    patch: false

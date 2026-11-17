@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Curl"
+version: "8.11.1"
+
+# Build information
+build:
+  1:
+    script: "curl.sh"
+    patch: false

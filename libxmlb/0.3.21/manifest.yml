@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libxmlb"
+version: "0.3.21"
+
+# Build information
+build:
+  1:
+    script: "libxmlb.sh"
+    patch: false

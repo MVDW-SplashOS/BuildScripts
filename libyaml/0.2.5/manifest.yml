@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libyaml"
+version: "0.2.5"
+
+# Build information
+build:
+  1:
+    script: "libyaml.sh"
+    patch: false
