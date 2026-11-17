@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Tiff"
+version: "4.4.0"
+
+# Build information
+build:
+  1:
+    script: "tiff.sh"
+    patch: false

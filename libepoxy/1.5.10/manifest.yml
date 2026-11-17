@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libepoxy"
+version: "1.5.10"
+
+# Build information
+build:
+  1:
+    script: "libepoxy.sh"
+    patch: false

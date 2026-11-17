@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Jpeg"
+version: "9f"
+
+# Build information
+build:
+  1:
+    script: "jpeg.sh"
+    patch: false
