@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Pyyaml"
+version: "6.0.2"
+
+# Build information
+build:
+  1:
+    script: "pyyaml.sh"
+    patch: false
