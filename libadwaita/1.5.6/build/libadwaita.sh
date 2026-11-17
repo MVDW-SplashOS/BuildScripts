@@ -7,8 +7,7 @@ meson setup build \
     -Dexamples=false \
     -Dintrospection=disabled \
     -Dvapi=false \
-    -Dgtk_doc=false \
-    -Dman=true
+    -Dgtk_doc=false
 
 ninja -C build
 ninja -C build install

@@ -2,7 +2,8 @@
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
-    -Dtests=false \
+    -Dbuild-testsuite=false \
+    -Dbuild-examples=false \
     -Dintrospection=disabled
 
 ninja -C build

@@ -2,8 +2,7 @@
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
-    -Dpython=false \
-    -Dtests=false
+    -Dpython=false
 
 ninja -C build
 ninja -C build install

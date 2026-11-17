@@ -9,8 +9,8 @@ meson setup build \
     -Dsysprof=disabled \
     -Dintrospection=disabled \
     -Ddocumentation=false \
-    -Ddtrace=false \
-    -Dsystemtap=false
+    -Ddtrace=disabled \
+    -Dsystemtap=disabled
 
 ninja -C build
 ninja -C build install

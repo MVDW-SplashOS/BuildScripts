@@ -3,7 +3,6 @@
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
-    -Dtests=false \
     -Dexamples=false \
     -Dman-pages=disabled
 

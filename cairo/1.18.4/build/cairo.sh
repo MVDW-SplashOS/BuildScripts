@@ -6,11 +6,11 @@ meson setup build \
     -Dpng=enabled \
     -Dfontconfig=enabled \
     -Dfreetype=enabled \
-    -Dgl-backend=disabled \
     -Dxcb=disabled \
     -Dxlib=disabled \
     -Dxlib-xcb=disabled \
-    -Dxcb-shm=disabled
+    -Dtests=disabled \
+    -Dgtk_doc=false
 
 ninja -C build
 ninja -C build install

@@ -5,7 +5,7 @@ meson setup build \
     --buildtype=release \
     -Dtests=false \
     -Dinstalled_tests=false \
-    -Ddocs=disabled \
+    -Ddocs=false \
     -Dintrospection=disabled \
     -Dpng=enabled \
     -Djpeg=disabled \

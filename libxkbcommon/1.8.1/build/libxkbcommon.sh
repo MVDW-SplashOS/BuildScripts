@@ -4,8 +4,7 @@ meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Denable-x11=false \
-    -Denable-docs=false \
-    -Denable-tests=false
+    -Denable-docs=false
 
 ninja -C build
 ninja -C build install

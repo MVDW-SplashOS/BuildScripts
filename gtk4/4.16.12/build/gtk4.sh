@@ -5,17 +5,19 @@
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
-    -Ddemos=false \
-    -Dexamples=false \
+    -Dbuild-demos=false \
+    -Dbuild-examples=false \
+    -Dbuild-testsuite=false \
     -Dbuild-tests=false \
     -Dintrospection=disabled \
-    -Dgtk_doc=false \
-    -Dman=false \
+    -Ddocumentation=false \
+    -Dman-pages=false \
     -Dvulkan=disabled \
-    -Dbroadway-backend=disabled \
-    -Dx11-backend=disabled \
+    -Dbroadway-backend=false \
+    -Dx11-backend=false \
     -Dmedia-gstreamer=disabled \
-    -Dprint-backends=none \
+    -Dprint-cpdb=disabled \
+    -Dprint-cups=disabled \
     -Dcloudproviders=disabled
 
 ninja -C build
