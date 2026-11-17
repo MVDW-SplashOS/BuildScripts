@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Cage"
+version: "0.2.0"
+
+# Build information
+build:
+  1:
+    script: "cage.sh"
+    patch: false

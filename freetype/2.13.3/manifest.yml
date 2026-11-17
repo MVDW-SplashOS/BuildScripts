@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Freetype"
+version: "2.13.3"
+
+# Build information
+build:
+  1:
+    script: "freetype.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libxkbcommon"
+version: "1.8.1"
+
+# Build information
+build:
+  1:
+    script: "libxkbcommon.sh"
+    patch: false

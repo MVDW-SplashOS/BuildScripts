@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libinput"
+version: "1.27.1"
+
+# Build information
+build:
+  1:
+    script: "libinput.sh"
+    patch: false

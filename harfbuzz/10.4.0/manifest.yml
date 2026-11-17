@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Harfbuzz"
+version: "10.4.0"
+
+# Build information
+build:
+  1:
+    script: "harfbuzz.sh"
+    patch: false

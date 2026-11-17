@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Xkeyboard-config"
+version: "2.44"
+
+# Build information
+build:
+  1:
+    script: "xkeyboard_config.sh"
+    patch: false

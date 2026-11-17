@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Pixman"
+version: "0.44.2"
+
+# Build information
+build:
+  1:
+    script: "pixman.sh"
+    patch: false

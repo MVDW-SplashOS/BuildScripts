@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Eudev"
+version: "3.2.14"
+
+# Build information
+build:
+  1:
+    script: "eudev.sh"
+    patch: false

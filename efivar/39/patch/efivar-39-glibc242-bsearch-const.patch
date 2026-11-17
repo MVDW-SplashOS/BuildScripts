@@ -1,0 +1,22 @@
+--- a/src/guid.c
++++ b/src/guid.c
+@@ -85,7 +85,8 @@
+ 	memcpy(&key.guid, guid, sizeof(*guid));
+ 
+ 	struct efivar_guidname *tmp;
+-	tmp = bsearch(&key,
++	/* glibc >= 2.42 makes bsearch() const-qualified; cast explicitly. */
++	tmp = (struct efivar_guidname *)bsearch(&key,
+ 		      &efi_well_known_guids[0],
+ 		      efi_n_well_known_guids,
+ 		      sizeof(efi_well_known_guids[0]),
+@@ -202,7 +203,8 @@
+ 	key.name[sizeof(key.name) - 1] = '\0';
+ 
+ 	struct efivar_guidname *result;
+-	result = bsearch(&key,
++	/* glibc >= 2.42 constification, see above. */
++	result = (struct efivar_guidname *)bsearch(&key,
+ 			 &efi_well_known_names[0],
+ 			 efi_n_well_known_names,
+ 			 sizeof(efi_well_known_names[0]),

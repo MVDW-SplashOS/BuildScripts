@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libliftoff"
+version: "0.5.0"
+
+# Build information
+build:
+  1:
+    script: "libliftoff.sh"
+    patch: false

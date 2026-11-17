@@ -6,4 +6,4 @@ version: "39"
 build:
   1:
     script: "efivar.sh"
-    patch: false
+    patch: "efivar-39-glibc242-bsearch-const.patch"

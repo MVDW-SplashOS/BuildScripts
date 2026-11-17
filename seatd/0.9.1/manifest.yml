@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Seatd"
+version: "0.9.1"
+
+# Build information
+build:
+  1:
+    script: "seatd.sh"
+    patch: false

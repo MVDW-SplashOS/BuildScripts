@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Graphene"
+version: "1.10.8"
+
+# Build information
+build:
+  1:
+    script: "graphene.sh"
+    patch: false

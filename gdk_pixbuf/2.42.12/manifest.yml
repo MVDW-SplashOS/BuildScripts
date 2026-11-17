@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Gdk-pixbuf"
+version: "2.42.12"
+
+# Build information
+build:
+  1:
+    script: "gdk_pixbuf.sh"
+    patch: false

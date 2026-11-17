@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Wayland"
+version: "1.23.1"
+
+# Build information
+build:
+  1:
+    script: "wayland.sh"
+    patch: false

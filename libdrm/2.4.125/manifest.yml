@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libdrm"
+version: "2.4.125"
+
+# Build information
+build:
+  1:
+    script: "libdrm.sh"
+    patch: false

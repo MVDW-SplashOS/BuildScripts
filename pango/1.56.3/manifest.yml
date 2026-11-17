@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Pango"
+version: "1.56.3"
+
+# Build information
+build:
+  1:
+    script: "pango.sh"
+    patch: false

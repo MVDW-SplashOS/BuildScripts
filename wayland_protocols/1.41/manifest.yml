@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Wayland-protocols"
+version: "1.41"
+
+# Build information
+build:
+  1:
+    script: "wayland_protocols.sh"
+    patch: false

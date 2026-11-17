@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Libadwaita"
+version: "1.5.6"
+
+# Build information
+build:
+  1:
+    script: "libadwaita.sh"
+    patch: false

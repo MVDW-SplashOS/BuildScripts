@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Fontconfig"
+version: "2.15.0"
+
+# Build information
+build:
+  1:
+    script: "fontconfig.sh"
+    patch: false

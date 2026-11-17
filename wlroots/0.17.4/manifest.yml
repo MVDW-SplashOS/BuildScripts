@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Wlroots"
+version: "0.17.4"
+
+# Build information
+build:
+  1:
+    script: "wlroots.sh"
+    patch: false

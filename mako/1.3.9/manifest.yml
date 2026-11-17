@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Mako"
+version: "1.3.9"
+
+# Build information
+build:
+  1:
+    script: "mako.sh"
+    patch: false
