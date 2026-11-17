@@ -89,6 +89,18 @@ jobs:
       run: |
         git clone --depth 1 --recurse-submodules --shallow-submodules https://github.com/MVDW-SplashOS/SourceStream.git
 
+    - name: Point SourceStream at the bootloader edition
+      if: steps.changed_packages.outputs.packages != ''
+      working-directory: SourceStream
+      run: |
+        # SourceStream looks each package up in the edition config it fetches
+        # from syspkg. The default (molecule) does not carry the graphical
+        # boot stack; the bootloader edition does. The bootloader edition on
+        # syspkg must therefore be current BEFORE this deploy runs — deploy
+        # the configuration repo first (its workflow uploads bootloader.yml).
+        sed -i 's/^edition: "molecule"/edition: "bootloader"/' config.yml
+        grep '^edition:' config.yml
+
     - name: Install SourceStream dependencies
       if: steps.changed_packages.outputs.packages != ''
       # --require-hashes enforces the hash-pinned lock file (pip verifies every
