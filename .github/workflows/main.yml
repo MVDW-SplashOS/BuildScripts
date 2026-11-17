@@ -17,6 +17,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: "Space-separated package names to repack+push (empty = diff of the last push)"
+        required: false
+        default: ""
 
 concurrency:
   group: deploy-source-packages
@@ -38,6 +44,8 @@ jobs:
 
     - name: Get List of Changed Packages
       id: changed_packages
+      env:
+        DISPATCH_PACKAGES: ${{ inputs.packages }}
       run: |
         before="${{ github.event.before }}"
         # New branch / first push: the before-sha doesn't exist locally.
@@ -46,15 +54,23 @@ jobs:
           echo "No previous commit known, falling back to $before"
         fi
 
-        # Top-level folders of BuildScripts are the package names; keep only
-        # folders that actually contain a manifest.yml (filters out .github,
-        # README.md, etc.)
-        packages=""
-        for pkg in $(git diff --name-only "$before" "$GITHUB_SHA" | awk -F/ '{print $1}' | sort -u); do
-          if [ -d "$pkg" ] && find "$pkg" -name manifest.yml | grep -q .; then
-            packages="$packages $pkg"
-          fi
-        done
+        if [ -n "$DISPATCH_PACKAGES" ]; then
+          # Manual dispatch: use the explicitly requested package list
+          # (used to re-deploy packages whose automatic run failed, or to
+          # force-repack specific packages without a code change).
+          packages="$DISPATCH_PACKAGES"
+          echo "Manual dispatch, requested packages:$packages"
+        else
+          # Top-level folders of BuildScripts are the package names; keep only
+          # folders that actually contain a manifest.yml (filters out .github,
+          # README.md, etc.)
+          packages=""
+          for pkg in $(git diff --name-only "$before" "$GITHUB_SHA" | awk -F/ '{print $1}' | sort -u); do
+            if [ -d "$pkg" ] && find "$pkg" -name manifest.yml | grep -q .; then
+              packages="$packages $pkg"
+            fi
+          done
+        fi
 
         packages="${packages# }"
         echo "Changed packages:${packages:- <none>}"
