@@ -15,6 +15,15 @@
 # pattern no longer matches, so the sed is a no-op on a re-run).
 sed -i 's/^  if with_platform_android$/  if true/' meson.build
 
+# With the system C11 threads enabled, glibc's mtx_t is an opaque union
+# (layout-identical to pthread_mutex_t but a distinct C type), and
+# cnd_monotonic.c passes the C11 mtx_t straight to pthread_cond_wait/
+# timedwait. Upstream only exercises this path on Android (plain typedef)
+# so it never noticed. Cast to the pthread type - the unions are
+# bit-compatible (this is what glibc's own cnd_timedwait does internally).
+sed -i 's|pthread_cond_timedwait(&cond->cond, mtx, abs_time)|pthread_cond_timedwait(\&cond->cond, (pthread_mutex_t *)mtx, abs_time)|' src/util/cnd_monotonic.c
+sed -i 's|pthread_cond_wait(&cond->cond, mtx)|pthread_cond_wait(\&cond->cond, (pthread_mutex_t *)mtx)|' src/util/cnd_monotonic.c
+
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
