@@ -2,7 +2,7 @@
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
-    -Dpython=disabled \
+    -Dpython=false \
     -Dtests=false
 
 ninja -C build
