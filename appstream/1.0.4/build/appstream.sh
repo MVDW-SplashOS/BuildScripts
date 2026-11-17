@@ -4,6 +4,19 @@
 # svg-support/gir) plus the remaining optional backends the stack does
 # not need. Requires gperf (base) and the xmlb/libcurl/libyaml/libxml2
 # libraries, all built earlier in this edition.
+#
+# data/meson.build also regenerates appstreamcli's own metainfo file and
+# merges its translations via i18n.itstool_join - which needs the itstool
+# program (and pulls libxml2's Python bindings). Nothing in this edition
+# uses that metainfo, so drop the block before configuring.
+python3 - <<'EOF'
+p = 'data/meson.build'
+s = open(p).read()
+start = s.index("metainfo_with_relinfo = custom_target(")
+end = s.index("# install appstream.conf default template")
+open(p, 'w').write(s[:start] + s[end:])
+EOF
+
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
