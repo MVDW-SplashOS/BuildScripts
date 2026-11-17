@@ -3,7 +3,6 @@
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
-    -Dexamples=false \
     -Dman-pages=disabled
 
 ninja -C build
