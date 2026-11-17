@@ -46,7 +46,12 @@ jobs:
       id: changed_packages
       env:
         DISPATCH_PACKAGES: ${{ inputs.packages }}
+        SFTP_USER: ${{ secrets.SPLASHOS_SFTP_USER }}
       run: |
+        # Auth diagnostics: length + hash of the username (the value itself
+        # stays masked by GitHub) to compare with the other repos' secrets.
+        echo "username length: ${#SFTP_USER}"
+        echo "username sha256: $(printf %s "$SFTP_USER" | sha256sum | cut -d' ' -f1)"
         before="${{ github.event.before }}"
         # New branch / first push: the before-sha doesn't exist locally.
         if [ -z "$before" ] || ! git cat-file -e "$before^{commit}" 2>/dev/null; then
@@ -125,6 +130,9 @@ jobs:
           echo "::error::SPLASHOS_SFTP_PRIVATE_KEY is not a valid OpenSSH private key."
           exit 1
         fi
+        # Auth diagnostics: fingerprint of the stored key (public half only,
+        # safe to log) for comparing with the other repos' secrets.
+        echo "stored key fingerprint: $(ssh-keygen -lf ~/.ssh/splashos_sftp_key)"
 
     - name: Configure SourceStream push target
       if: steps.changed_packages.outputs.packages != ''
