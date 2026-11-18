@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Splash Boot Manager"
+version: "0.1.11"
+
+# Build information
+build:
+  1:
+    script: "splash_boot_manager.sh"
+    patch: false
