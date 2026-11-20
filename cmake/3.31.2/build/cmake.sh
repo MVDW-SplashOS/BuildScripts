@@ -13,7 +13,7 @@ sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake
     --no-system-nghttp2 \
     --no-system-libarchive \
     --docdir=/share/doc/cmake-3.31.2 \
-    --parallel=$(nproc)
+    --parallel="$(echo "$MAKEFLAGS" | sed -n "s/.*-j *\([0-9]*\).*/\1/p" | grep . || nproc)"
 
 make
 make install

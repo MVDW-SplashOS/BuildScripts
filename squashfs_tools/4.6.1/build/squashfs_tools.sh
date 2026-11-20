@@ -8,7 +8,7 @@ cd squashfs-tools
 # Match the compressors AppImages actually use: gzip (the classic
 # AppImage type-2 default), xz, lz4 and zstd. LZO is not packaged, so it
 # stays disabled. zlib/xz/lz4/zstd were built earlier in the base chain.
-make -j"$(nproc)" \
+make \
     GZIP_SUPPORT=1 \
     XZ_SUPPORT=1 \
     LZ4_SUPPORT=1 \
