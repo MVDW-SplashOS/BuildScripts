@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "which"
+version: "2.23"
+
+# Build information
+build:
+  1:
+    script: "which.sh"
+    patch: false
