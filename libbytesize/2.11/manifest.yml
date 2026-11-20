@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libbytesize"
+version: "2.11"
+
+# Build information
+build:
+  1:
+    script: "libbytesize.sh"
+    patch: false

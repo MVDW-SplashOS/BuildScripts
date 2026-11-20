@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "modemmanager"
+version: "1.22.0"
+
+# Build information
+build:
+  1:
+    script: "modemmanager.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libnvme"
+version: "1.11.1"
+
+# Build information
+build:
+  1:
+    script: "libnvme.sh"
+    patch: false

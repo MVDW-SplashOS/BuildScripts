@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "colord_gtk"
+version: "0.3.1"
+
+# Build information
+build:
+  1:
+    script: "colord_gtk.sh"
+    patch: false

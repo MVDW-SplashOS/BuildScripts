@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "mobile_broadband_provider_info"
+version: "20240407"
+
+# Build information
+build:
+  1:
+    script: "mobile_broadband_provider_info.sh"
+    patch: false

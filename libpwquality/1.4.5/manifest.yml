@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libpwquality"
+version: "1.4.5"
+
+# Build information
+build:
+  1:
+    script: "libpwquality.sh"
+    patch: false

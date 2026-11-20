@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "lvm2"
+version: "2.03.29"
+
+# Build information
+build:
+  1:
+    script: "lvm2.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libatasmart"
+version: "0.19"
+
+# Build information
+build:
+  1:
+    script: "libatasmart.sh"
+    patch: false

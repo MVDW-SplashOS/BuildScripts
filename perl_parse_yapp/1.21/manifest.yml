@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "perl_parse_yapp"
+version: "1.21"
+
+# Build information
+build:
+  1:
+    script: "perl_parse_yapp.sh"
+    patch: false

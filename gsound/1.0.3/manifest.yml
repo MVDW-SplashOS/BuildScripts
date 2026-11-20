@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gsound"
+version: "1.0.3"
+
+# Build information
+build:
+  1:
+    script: "gsound.sh"
+    patch: false

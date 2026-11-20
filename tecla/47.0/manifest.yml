@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "tecla"
+version: "47.0"
+
+# Build information
+build:
+  1:
+    script: "tecla.sh"
+    patch: false

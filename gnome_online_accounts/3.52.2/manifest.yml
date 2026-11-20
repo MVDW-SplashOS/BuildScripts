@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gnome_online_accounts"
+version: "3.52.2"
+
+# Build information
+build:
+  1:
+    script: "gnome_online_accounts.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxslt"
+version: "1.1.42"
+
+# Build information
+build:
+  1:
+    script: "libxslt.sh"
+    patch: false

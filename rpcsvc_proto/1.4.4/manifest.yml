@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "rpcsvc_proto"
+version: "1.4.4"
+
+# Build information
+build:
+  1:
+    script: "rpcsvc_proto.sh"
+    patch: false

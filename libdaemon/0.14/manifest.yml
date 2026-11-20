@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libdaemon"
+version: "0.14"
+
+# Build information
+build:
+  1:
+    script: "libdaemon.sh"
+    patch: false

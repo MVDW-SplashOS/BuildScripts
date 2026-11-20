@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "cracklib"
+version: "2.10.3"
+
+# Build information
+build:
+  1:
+    script: "cracklib.sh"
+    patch: false

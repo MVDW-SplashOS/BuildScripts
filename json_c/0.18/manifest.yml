@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "json_c"
+version: "0.18"
+
+# Build information
+build:
+  1:
+    script: "json_c.sh"
+    patch: false

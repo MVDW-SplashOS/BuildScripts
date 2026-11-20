@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libnma"
+version: "1.10.6"
+
+# Build information
+build:
+  1:
+    script: "libnma.sh"
+    patch: false

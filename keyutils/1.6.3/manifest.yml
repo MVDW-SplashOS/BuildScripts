@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "keyutils"
+version: "1.6.3"
+
+# Build information
+build:
+  1:
+    script: "keyutils.sh"
+    patch: false
