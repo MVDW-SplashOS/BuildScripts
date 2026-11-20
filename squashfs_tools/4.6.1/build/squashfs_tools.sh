@@ -15,10 +15,15 @@ make -j"$(nproc)" \
     ZSTD_SUPPORT=1 \
     LZO_SUPPORT=0
 
-# Install into /usr and use the shipped (pre-built) man pages so the build
-# does not depend on help2man.
-make install \
-    INSTALL_PREFIX=/usr \
-    INSTALL_DIR=/usr/bin \
-    INSTALL_MANPAGES_DIR=/usr/share/man/man1 \
-    USE_PREBUILT_MANPAGES=y
+# Install by hand instead of `make install`: its last step runs
+# generate-manpages/install-manpages.sh, which sources functions.sh and
+# aborts when `which` is missing (the system does not ship it), even when
+# man page installation is disabled. These are the same files the install
+# target copies, plus the pre-built man pages from the archive (no
+# help2man needed).
+install -v -d -m755 /usr/bin /usr/share/man/man1
+install -v -m755 mksquashfs unsquashfs /usr/bin
+ln -sfv unsquashfs /usr/bin/sqfscat
+ln -sfv mksquashfs /usr/bin/sqfstar
+install -v -m644 ../manpages/mksquashfs.1 ../manpages/unsquashfs.1 \
+    ../manpages/sqfscat.1 ../manpages/sqfstar.1 /usr/share/man/man1
