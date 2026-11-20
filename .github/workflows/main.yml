@@ -59,6 +59,12 @@ jobs:
           echo "No previous commit known, falling back to $before"
         fi
 
+        # Every entry is "<package>:<version>" (or a bare "<package>", which
+        # SourceStream resolves to the first version pinned in any edition).
+        # Explicit versions matter: one package can be pinned at different
+        # versions by different editions (e.g. libadwaita 1.5.6 for the
+        # bootloader, 1.6.2 for the desktop), and each changed version
+        # directory must be deployed as that version.
         if [ -n "$DISPATCH_PACKAGES" ]; then
           # Manual dispatch: use the explicitly requested package list
           # (used to re-deploy packages whose automatic run failed, or to
@@ -66,13 +72,13 @@ jobs:
           packages="$DISPATCH_PACKAGES"
           echo "Manual dispatch, requested packages:$packages"
         else
-          # Top-level folders of BuildScripts are the package names; keep only
-          # folders that actually contain a manifest.yml (filters out .github,
-          # README.md, etc.)
+          # BuildScripts layout is <package>/<version>/{manifest.yml,build/,patch/};
+          # deploy every changed <package>/<version> that still has a
+          # manifest.yml (filters out .github, README.md and deleted versions).
           packages=""
-          for pkg in $(git diff --name-only "$before" "$GITHUB_SHA" | awk -F/ '{print $1}' | sort -u); do
-            if [ -d "$pkg" ] && find "$pkg" -name manifest.yml | grep -q .; then
-              packages="$packages $pkg"
+          for pv in $(git diff --name-only "$before" "$GITHUB_SHA" | awk -F/ 'NF >= 3 {print $1 "/" $2}' | sort -u); do
+            if [ -f "$pv/manifest.yml" ]; then
+              packages="$packages ${pv%%/*}:${pv#*/}"
             fi
           done
         fi
@@ -94,17 +100,50 @@ jobs:
       run: |
         git clone --depth 1 --recurse-submodules --shallow-submodules https://github.com/MVDW-SplashOS/SourceStream.git
 
-    - name: Point SourceStream at the bootloader edition
+    - name: Get the configuration repository
+      if: steps.changed_packages.outputs.packages != ''
+      run: |
+        git clone --depth 1 https://github.com/MVDW-SplashOS/configuration.git
+
+    - name: Point SourceStream at all editions
       if: steps.changed_packages.outputs.packages != ''
       working-directory: SourceStream
       run: |
-        # SourceStream looks each package up in the edition config it fetches
-        # from syspkg. The default (molecule) does not carry the graphical
-        # boot stack; the bootloader edition does. The bootloader edition on
-        # syspkg must therefore be current BEFORE this deploy runs — deploy
-        # the configuration repo first (its workflow uploads bootloader.yml).
-        sed -i 's/^edition: "molecule"/edition: "bootloader"/' config.yml
-        grep '^edition:' config.yml
+        # SourceStream only repacks packages it finds in its edition config,
+        # and it does not resolve `parentconfig` chains. Pointing it at one
+        # edition (it used to be "bootloader") made every package outside
+        # that edition fail with "Can't find the package". Instead, give it
+        # the union of the packages of EVERY edition of the release, taken
+        # from the configuration repo (edition "custom" = use the local
+        # edition-configuration.yml, no download).
+        #
+        # upstream-sources.yml comes from the same checkout and is locked
+        # (.lock-sources): a package and its source URL are often pushed
+        # together, and the configuration deploy that updates syspkg can
+        # still be running when this job starts.
+        python - <<'EOF'
+        import glob, os, yaml
+        with open("config.yml") as f:
+            config = yaml.safe_load(f)
+        release = config["version"]
+        packages = []
+        for path in sorted(glob.glob(f"../configuration/edition-packages/{release}/*.yml")):
+            with open(path) as f:
+                edition = yaml.safe_load(f) or {}
+            packages += edition.get("packages") or []
+            print(f"{os.path.basename(path)}: {len(edition.get('packages') or [])} packages")
+        if not packages:
+            raise SystemExit(f"no edition configs found for release {release}")
+        with open("edition-configuration.yml", "w") as f:
+            yaml.safe_dump({"parentconfig": False, "packages": packages}, f, default_flow_style=False)
+        config["edition"] = "custom"
+        config["update-edition"] = False
+        with open("config.yml", "w") as f:
+            yaml.safe_dump(config, f, default_flow_style=False)
+        print(f"edition-configuration.yml: {len(packages)} entries from all editions of {release}")
+        EOF
+        cp ../configuration/upstream-sources.yml upstream-sources.yml
+        touch .lock-sources
 
     - name: Install SourceStream dependencies
       if: steps.changed_packages.outputs.packages != ''
@@ -191,6 +230,8 @@ jobs:
         # patch/ and SFTPs it to source-packages/<pkg>/<pkg>-<ver>.tar.xz.
         # Per-package invocations isolate failures: one broken package does
         # not block pushing the others, but the job still fails at the end.
+        # Each entry is "<package>:<version>" or "<package>", passed on as
+        # SourceStream's p:<package>[:<version>] argument.
         failed=""
         for package in ${{ steps.changed_packages.outputs.packages }}; do
           echo "::group::Repack+push $package"
