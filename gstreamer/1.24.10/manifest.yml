@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gstreamer"
+version: "1.24.10"
+
+# Build information
+build:
+  1:
+    script: "gstreamer.sh"
+    patch: false

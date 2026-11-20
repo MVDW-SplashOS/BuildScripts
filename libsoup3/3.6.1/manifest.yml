@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libsoup3"
+version: "3.6.1"
+
+# Build information
+build:
+  1:
+    script: "libsoup3.sh"
+    patch: false

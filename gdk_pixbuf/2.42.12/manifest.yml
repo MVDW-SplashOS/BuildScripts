@@ -7,3 +7,6 @@ build:
   1:
     script: "gdk_pixbuf.sh"
     patch: false
+  2:
+    script: "gdk-pixbuf-gi.sh"
+    patch: false

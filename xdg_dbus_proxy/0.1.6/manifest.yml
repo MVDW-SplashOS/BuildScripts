@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xdg_dbus_proxy"
+version: "0.1.6"
+
+# Build information
+build:
+  1:
+    script: "xdg_dbus_proxy.sh"
+    patch: false

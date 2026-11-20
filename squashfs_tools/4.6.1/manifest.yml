@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "squashfs_tools"
+version: "4.6.1"
+
+# Build information
+build:
+  1:
+    script: "squashfs_tools.sh"
+    patch: false

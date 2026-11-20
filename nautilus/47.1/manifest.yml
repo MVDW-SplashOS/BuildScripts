@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "nautilus"
+version: "47.1"
+
+# Build information
+build:
+  1:
+    script: "nautilus.sh"
+    patch: false

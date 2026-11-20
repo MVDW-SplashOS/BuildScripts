@@ -7,3 +7,6 @@ build:
   1:
     script: "cairo.sh"
     patch: false
+  2:
+    script: "cairo-x11.sh"
+    patch: false

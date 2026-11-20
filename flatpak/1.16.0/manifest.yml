@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "flatpak"
+version: "1.16.0"
+
+# Build information
+build:
+  1:
+    script: "flatpak.sh"
+    patch: false

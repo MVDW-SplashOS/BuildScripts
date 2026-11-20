@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gpgme"
+version: "1.24.1"
+
+# Build information
+build:
+  1:
+    script: "gpgme.sh"
+    patch: false

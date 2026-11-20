@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gst_plugins_base"
+version: "1.24.10"
+
+# Build information
+build:
+  1:
+    script: "gst_plugins_base.sh"
+    patch: false

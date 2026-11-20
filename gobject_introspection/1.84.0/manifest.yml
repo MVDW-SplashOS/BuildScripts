@@ -1,0 +1,12 @@
+# Basic package metadata
+package: "gobject_introspection"
+version: "1.84.0"
+
+# Build information
+build:
+  1:
+    script: "gobject-introspection.sh"
+    patch: false
+  2:
+    script: "gobject-introspection-cairo.sh"
+    patch: false

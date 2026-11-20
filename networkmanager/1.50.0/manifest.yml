@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "networkmanager"
+version: "1.50.0"
+
+# Build information
+build:
+  1:
+    script: "networkmanager.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libice"
+version: "1.1.1"
+
+# Build information
+build:
+  1:
+    script: "libice.sh"
+    patch: false

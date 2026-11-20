@@ -7,3 +7,6 @@ build:
   1:
     script: "libxkbcommon.sh"
     patch: false
+  2:
+    script: "libxkbcommon-x11.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "wireplumber"
+version: "0.5.7"
+
+# Build information
+build:
+  1:
+    script: "wireplumber.sh"
+    patch: false

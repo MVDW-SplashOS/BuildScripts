@@ -7,3 +7,6 @@ build:
   1:
     script: "gtk4.sh"
     patch: false
+  2:
+    script: "gtk4-gnome.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxshmfence"
+version: "1.3.3"
+
+# Build information
+build:
+  1:
+    script: "libxshmfence.sh"
+    patch: false

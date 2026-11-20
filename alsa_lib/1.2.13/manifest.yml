@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "alsa_lib"
+version: "1.2.13"
+
+# Build information
+build:
+  1:
+    script: "alsa_lib.sh"
+    patch: false

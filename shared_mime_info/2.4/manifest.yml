@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "shared_mime_info"
+version: "2.4"
+
+# Build information
+build:
+  1:
+    script: "shared_mime_info.sh"
+    patch: false

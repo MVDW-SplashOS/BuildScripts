@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "lcms2"
+version: "2.16"
+
+# Build information
+build:
+  1:
+    script: "lcms2.sh"
+    patch: false

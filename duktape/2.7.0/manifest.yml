@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "duktape"
+version: "2.7.0"
+
+# Build information
+build:
+  1:
+    script: "duktape.sh"
+    patch: false

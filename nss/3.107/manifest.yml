@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "nss"
+version: "3.107"
+
+# Build information
+build:
+  1:
+    script: "nss.sh"
+    patch: false

@@ -7,3 +7,6 @@ build:
   1:
     script: "libepoxy.sh"
     patch: false
+  2:
+    script: "libepoxy-glx.sh"
+    patch: false

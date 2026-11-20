@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xdg_desktop_portal"
+version: "1.20.0"
+
+# Build information
+build:
+  1:
+    script: "xdg_desktop_portal.sh"
+    patch: false

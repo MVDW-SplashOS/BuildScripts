@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxfont2"
+version: "2.0.7"
+
+# Build information
+build:
+  1:
+    script: "libxfont2.sh"
+    patch: false

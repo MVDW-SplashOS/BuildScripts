@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxrender"
+version: "0.9.11"
+
+# Build information
+build:
+  1:
+    script: "libxrender.sh"
+    patch: false

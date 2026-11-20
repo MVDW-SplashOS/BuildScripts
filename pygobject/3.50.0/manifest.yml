@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "pygobject"
+version: "3.50.0"
+
+# Build information
+build:
+  1:
+    script: "pygobject.sh"
+    patch: false

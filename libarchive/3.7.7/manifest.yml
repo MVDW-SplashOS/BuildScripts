@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libarchive"
+version: "3.7.7"
+
+# Build information
+build:
+  1:
+    script: "libarchive.sh"
+    patch: false

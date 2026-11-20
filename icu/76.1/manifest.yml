@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "icu"
+version: "76.1"
+
+# Build information
+build:
+  1:
+    script: "icu.sh"
+    patch: false

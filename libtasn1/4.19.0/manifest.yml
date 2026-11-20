@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libtasn1"
+version: "4.19.0"
+
+# Build information
+build:
+  1:
+    script: "libtasn1.sh"
+    patch: false

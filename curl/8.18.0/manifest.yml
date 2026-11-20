@@ -7,3 +7,6 @@ build:
   1:
     script: "curl.sh"
     patch: false
+  2:
+    script: "curl-ca.sh"
+    patch: false

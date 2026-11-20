@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxext"
+version: "1.3.6"
+
+# Build information
+build:
+  1:
+    script: "libxext.sh"
+    patch: false

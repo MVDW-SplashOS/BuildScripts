@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "bluez"
+version: "5.79"
+
+# Build information
+build:
+  1:
+    script: "bluez.sh"
+    patch: false

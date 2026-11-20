@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "nettle"
+version: "3.10.1"
+
+# Build information
+build:
+  1:
+    script: "nettle.sh"
+    patch: false

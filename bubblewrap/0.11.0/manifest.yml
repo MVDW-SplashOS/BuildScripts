@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "bubblewrap"
+version: "0.11.0"
+
+# Build information
+build:
+  1:
+    script: "bubblewrap.sh"
+    patch: false

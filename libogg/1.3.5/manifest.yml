@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libogg"
+version: "1.3.5"
+
+# Build information
+build:
+  1:
+    script: "libogg.sh"
+    patch: false

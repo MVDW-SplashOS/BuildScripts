@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxtst"
+version: "1.2.4"
+
+# Build information
+build:
+  1:
+    script: "libxtst.sh"
+    patch: false

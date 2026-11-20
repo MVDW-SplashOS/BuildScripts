@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libx11"
+version: "1.8.10"
+
+# Build information
+build:
+  1:
+    script: "libx11.sh"
+    patch: false

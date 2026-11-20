@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "wpa_supplicant"
+version: "2.11"
+
+# Build information
+build:
+  1:
+    script: "wpa_supplicant.sh"
+    patch: false

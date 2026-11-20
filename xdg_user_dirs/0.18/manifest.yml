@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xdg_user_dirs"
+version: "0.18"
+
+# Build information
+build:
+  1:
+    script: "xdg_user_dirs.sh"
+    patch: false

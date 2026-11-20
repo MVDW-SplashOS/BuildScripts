@@ -20,6 +20,13 @@ make defconfig
 # - EFI_STUB: the firmware boots the kernel image directly on UEFI
 #   (the custom boot manager replaces GRUB)
 # - EFIVAR_FS: efibootmgr needs it for --bootnext entries
+# - OVERLAY_FS: the immutable desktop boots with systemd.volatile=overlay
+#   (read-only image root + tmpfs upper layer)
+# - USER_NS: Flatpak sandboxes apps through bubblewrap in an unprivileged
+#   user namespace
+# - FUSE_FS: AppImages mount their payload via FUSE; Flatpak's document
+#   portal (xdg-desktop-portal) and ostree's rofiles-fuse use it too
+# - SQUASHFS (+XZ/ZSTD): AppImage payloads are SquashFS images
 # ---------------------------------------------------------------------------
 cat > splashos.fragment << "EOF"
 CONFIG_FB=y
@@ -29,6 +36,12 @@ CONFIG_KEXEC=y
 CONFIG_KEXEC_FILE=y
 CONFIG_EFI_STUB=y
 CONFIG_EFIVAR_FS=y
+CONFIG_OVERLAY_FS=y
+CONFIG_USER_NS=y
+CONFIG_FUSE_FS=y
+CONFIG_SQUASHFS=y
+CONFIG_SQUASHFS_XZ=y
+CONFIG_SQUASHFS_ZSTD=y
 EOF
 
 ./scripts/kconfig/merge_config.sh -m .config splashos.fragment
@@ -37,7 +50,8 @@ rm splashos.fragment
 
 # Fail the build if any delta did not survive kconfig resolution (a renamed
 # or newly constrained symbol must be noticed here, not at boot time).
-for sym in FRAMEBUFFER_CONSOLE KEXEC KEXEC_FILE EFI_STUB EFIVAR_FS; do
+for sym in FRAMEBUFFER_CONSOLE KEXEC KEXEC_FILE EFI_STUB EFIVAR_FS \
+           OVERLAY_FS USER_NS FUSE_FS SQUASHFS SQUASHFS_XZ SQUASHFS_ZSTD; do
     grep -q "^CONFIG_${sym}=y$" .config || {
         echo "FATAL: CONFIG_${sym} missing from the kernel config" >&2
         exit 1

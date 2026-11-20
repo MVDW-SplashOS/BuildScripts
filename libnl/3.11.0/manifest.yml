@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libnl"
+version: "3.11.0"
+
+# Build information
+build:
+  1:
+    script: "libnl.sh"
+    patch: false

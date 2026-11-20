@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "accountsservice"
+version: "23.13.9"
+
+# Build information
+build:
+  1:
+    script: "accountsservice.sh"
+    patch: false

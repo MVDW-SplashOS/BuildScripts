@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "json_glib"
+version: "1.10.0"
+
+# Build information
+build:
+  1:
+    script: "json_glib.sh"
+    patch: false

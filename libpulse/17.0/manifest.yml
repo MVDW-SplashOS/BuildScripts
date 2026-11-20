@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libpulse"
+version: "17.0"
+
+# Build information
+build:
+  1:
+    script: "libpulse.sh"
+    patch: false

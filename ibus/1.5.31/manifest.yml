@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "ibus"
+version: "1.5.31"
+
+# Build information
+build:
+  1:
+    script: "ibus.sh"
+    patch: false

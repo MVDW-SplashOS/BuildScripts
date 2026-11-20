@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libgudev"
+version: "238"
+
+# Build information
+build:
+  1:
+    script: "libgudev.sh"
+    patch: false

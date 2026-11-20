@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "fuse"
+version: "2.9.9"
+
+# Build information
+build:
+  1:
+    script: "fuse.sh"
+    patch: false

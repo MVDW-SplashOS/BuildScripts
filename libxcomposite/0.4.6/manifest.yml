@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxcomposite"
+version: "0.4.6"
+
+# Build information
+build:
+  1:
+    script: "libxcomposite.sh"
+    patch: false

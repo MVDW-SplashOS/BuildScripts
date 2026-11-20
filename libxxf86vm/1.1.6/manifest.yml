@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxxf86vm"
+version: "1.1.6"
+
+# Build information
+build:
+  1:
+    script: "libxxf86vm.sh"
+    patch: false

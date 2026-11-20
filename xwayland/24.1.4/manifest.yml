@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xwayland"
+version: "24.1.4"
+
+# Build information
+build:
+  1:
+    script: "xwayland.sh"
+    patch: false

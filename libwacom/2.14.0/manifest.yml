@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libwacom"
+version: "2.14.0"
+
+# Build information
+build:
+  1:
+    script: "libwacom.sh"
+    patch: false

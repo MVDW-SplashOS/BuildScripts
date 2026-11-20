@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xkbcomp"
+version: "1.4.7"
+
+# Build information
+build:
+  1:
+    script: "xkbcomp.sh"
+    patch: false

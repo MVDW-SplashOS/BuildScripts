@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "geocode_glib"
+version: "3.26.4"
+
+# Build information
+build:
+  1:
+    script: "geocode_glib.sh"
+    patch: false

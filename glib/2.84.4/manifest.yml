@@ -7,3 +7,6 @@ build:
   1:
     script: "glib.sh"
     patch: false
+  2:
+    script: "glib-gi.sh"
+    patch: false

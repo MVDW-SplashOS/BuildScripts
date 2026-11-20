@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "vte"
+version: "0.78.1"
+
+# Build information
+build:
+  1:
+    script: "vte.sh"
+    patch: false

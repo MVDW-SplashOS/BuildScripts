@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libsndfile"
+version: "1.2.2"
+
+# Build information
+build:
+  1:
+    script: "libsndfile.sh"
+    patch: false

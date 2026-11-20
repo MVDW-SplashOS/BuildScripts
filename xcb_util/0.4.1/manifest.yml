@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xcb_util"
+version: "0.4.1"
+
+# Build information
+build:
+  1:
+    script: "xcb_util.sh"
+    patch: false

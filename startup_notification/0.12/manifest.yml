@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "startup_notification"
+version: "0.12"
+
+# Build information
+build:
+  1:
+    script: "startup_notification.sh"
+    patch: false

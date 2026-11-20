@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxfixes"
+version: "6.0.1"
+
+# Build information
+build:
+  1:
+    script: "libxfixes.sh"
+    patch: false

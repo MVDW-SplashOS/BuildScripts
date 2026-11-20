@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libvorbis"
+version: "1.3.7"
+
+# Build information
+build:
+  1:
+    script: "libvorbis.sh"
+    patch: false

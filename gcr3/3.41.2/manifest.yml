@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gcr3"
+version: "3.41.2"
+
+# Build information
+build:
+  1:
+    script: "gcr3.sh"
+    patch: false

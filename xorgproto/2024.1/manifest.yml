@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xorgproto"
+version: "2024.1"
+
+# Build information
+build:
+  1:
+    script: "xorgproto.sh"
+    patch: false

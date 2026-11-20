@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gdm"
+version: "47.0"
+
+# Build information
+build:
+  1:
+    script: "gdm.sh"
+    patch: false

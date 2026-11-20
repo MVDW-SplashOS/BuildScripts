@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxkbfile"
+version: "1.1.3"
+
+# Build information
+build:
+  1:
+    script: "libxkbfile.sh"
+    patch: false

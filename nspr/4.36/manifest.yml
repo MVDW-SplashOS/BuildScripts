@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "nspr"
+version: "4.36"
+
+# Build information
+build:
+  1:
+    script: "nspr.sh"
+    patch: false

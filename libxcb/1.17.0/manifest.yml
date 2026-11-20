@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxcb"
+version: "1.17.0"
+
+# Build information
+build:
+  1:
+    script: "libxcb.sh"
+    patch: false

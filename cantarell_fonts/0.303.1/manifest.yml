@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "cantarell_fonts"
+version: "0.303.1"
+
+# Build information
+build:
+  1:
+    script: "cantarell_fonts.sh"
+    patch: false

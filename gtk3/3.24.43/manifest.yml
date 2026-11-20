@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gtk3"
+version: "3.24.43"
+
+# Build information
+build:
+  1:
+    script: "gtk3.sh"
+    patch: false

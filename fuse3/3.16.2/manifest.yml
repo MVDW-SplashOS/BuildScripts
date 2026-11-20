@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "fuse3"
+version: "3.16.2"
+
+# Build information
+build:
+  1:
+    script: "fuse3.sh"
+    patch: false

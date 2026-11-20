@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libseccomp"
+version: "2.5.5"
+
+# Build information
+build:
+  1:
+    script: "libseccomp.sh"
+    patch: false

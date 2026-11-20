@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gnome_keyring"
+version: "46.2"
+
+# Build information
+build:
+  1:
+    script: "gnome_keyring.sh"
+    patch: false

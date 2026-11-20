@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "python_attrs"
+version: "24.2.0"
+
+# Build information
+build:
+  1:
+    script: "python_attrs.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxau"
+version: "1.0.12"
+
+# Build information
+build:
+  1:
+    script: "libxau.sh"
+    patch: false

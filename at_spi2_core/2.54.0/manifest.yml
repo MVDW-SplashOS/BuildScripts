@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "at_spi2_core"
+version: "2.54.0"
+
+# Build information
+build:
+  1:
+    script: "at_spi2_core.sh"
+    patch: false

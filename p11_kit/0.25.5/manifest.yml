@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "p11_kit"
+version: "0.25.5"
+
+# Build information
+build:
+  1:
+    script: "p11_kit.sh"
+    patch: false

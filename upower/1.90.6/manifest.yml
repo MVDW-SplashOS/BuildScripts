@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "upower"
+version: "1.90.6"
+
+# Build information
+build:
+  1:
+    script: "upower.sh"
+    patch: false

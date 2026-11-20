@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "lua"
+version: "5.4.7"
+
+# Build information
+build:
+  1:
+    script: "lua.sh"
+    patch: false

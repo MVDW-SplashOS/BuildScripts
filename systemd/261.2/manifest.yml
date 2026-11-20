@@ -12,3 +12,6 @@ build:
     # transaction code was refactored), so the patch no longer applies
     # (2 of its hunks fail). LFS r13.1 ships no systemd patch either.
     patch: false
+  2:
+    script: "systemd-pam.sh"
+    patch: false

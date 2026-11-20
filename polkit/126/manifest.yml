@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "polkit"
+version: "126"
+
+# Build information
+build:
+  1:
+    script: "polkit.sh"
+    patch: false

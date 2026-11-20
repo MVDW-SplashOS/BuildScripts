@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gnome_desktop"
+version: "44.0"
+
+# Build information
+build:
+  1:
+    script: "gnome_desktop.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "make_ca"
+version: "1.14"
+
+# Build information
+build:
+  1:
+    script: "make_ca.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "desktop_file_utils"
+version: "0.28"
+
+# Build information
+build:
+  1:
+    script: "desktop_file_utils.sh"
+    patch: false

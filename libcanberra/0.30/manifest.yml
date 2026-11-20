@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libcanberra"
+version: "0.30"
+
+# Build information
+build:
+  1:
+    script: "libcanberra.sh"
+    patch: false

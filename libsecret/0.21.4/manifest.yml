@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libsecret"
+version: "0.21.4"
+
+# Build information
+build:
+  1:
+    script: "libsecret.sh"
+    patch: false

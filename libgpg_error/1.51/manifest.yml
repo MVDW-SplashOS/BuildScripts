@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libgpg_error"
+version: "1.51"
+
+# Build information
+build:
+  1:
+    script: "libgpg_error.sh"
+    patch: false

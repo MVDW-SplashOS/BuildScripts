@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libpsl"
+version: "0.21.5"
+
+# Build information
+build:
+  1:
+    script: "libpsl.sh"
+    patch: false

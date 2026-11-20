@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xdg_utils"
+version: "1.2.1"
+
+# Build information
+build:
+  1:
+    script: "xdg_utils.sh"
+    patch: false

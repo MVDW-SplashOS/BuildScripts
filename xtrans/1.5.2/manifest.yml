@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xtrans"
+version: "1.5.2"
+
+# Build information
+build:
+  1:
+    script: "xtrans.sh"
+    patch: false

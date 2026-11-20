@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libksba"
+version: "1.6.7"
+
+# Build information
+build:
+  1:
+    script: "libksba.sh"
+    patch: false

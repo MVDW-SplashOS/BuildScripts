@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "colord"
+version: "1.4.7"
+
+# Build information
+build:
+  1:
+    script: "colord.sh"
+    patch: false

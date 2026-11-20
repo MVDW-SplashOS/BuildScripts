@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "hicolor_icon_theme"
+version: "0.18"
+
+# Build information
+build:
+  1:
+    script: "hicolor_icon_theme.sh"
+    patch: false

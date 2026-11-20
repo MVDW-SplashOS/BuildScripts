@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gnome_autoar"
+version: "0.4.5"
+
+# Build information
+build:
+  1:
+    script: "gnome_autoar.sh"
+    patch: false

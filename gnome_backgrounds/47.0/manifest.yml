@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gnome_backgrounds"
+version: "47.0"
+
+# Build information
+build:
+  1:
+    script: "gnome_backgrounds.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libassuan"
+version: "3.0.1"
+
+# Build information
+build:
+  1:
+    script: "libassuan.sh"
+    patch: false

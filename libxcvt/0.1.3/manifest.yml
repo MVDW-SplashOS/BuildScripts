@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libxcvt"
+version: "0.1.3"
+
+# Build information
+build:
+  1:
+    script: "libxcvt.sh"
+    patch: false

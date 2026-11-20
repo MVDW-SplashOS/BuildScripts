@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "ostree"
+version: "2024.10"
+
+# Build information
+build:
+  1:
+    script: "ostree.sh"
+    patch: false

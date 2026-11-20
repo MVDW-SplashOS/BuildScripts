@@ -7,3 +7,6 @@ build:
   1:
     script: "pango.sh"
     patch: false
+  2:
+    script: "pango-gi.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "mutter"
+version: "47.2"
+
+# Build information
+build:
+  1:
+    script: "mutter.sh"
+    patch: false

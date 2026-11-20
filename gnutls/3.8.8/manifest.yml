@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "gnutls"
+version: "3.8.8"
+
+# Build information
+build:
+  1:
+    script: "gnutls.sh"
+    patch: false

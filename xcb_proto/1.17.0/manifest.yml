@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "xcb_proto"
+version: "1.17.0"
+
+# Build information
+build:
+  1:
+    script: "xcb_proto.sh"
+    patch: false

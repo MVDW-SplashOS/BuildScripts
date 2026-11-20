@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "evolution_data_server"
+version: "3.54.3"
+
+# Build information
+build:
+  1:
+    script: "evolution_data_server.sh"
+    patch: false
