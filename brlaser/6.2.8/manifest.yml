@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "brlaser"
+version: "6.2.8"
+
+# Build information
+build:
+  1:
+    script: "brlaser.sh"
+    patch: false

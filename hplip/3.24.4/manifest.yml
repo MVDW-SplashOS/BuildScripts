@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "hplip"
+version: "3.24.4"
+
+# Build information
+build:
+  1:
+    script: "hplip.sh"
+    patch: false
