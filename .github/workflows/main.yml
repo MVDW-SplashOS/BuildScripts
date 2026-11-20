@@ -100,6 +100,12 @@ jobs:
       run: |
         git clone --depth 1 --recurse-submodules --shallow-submodules https://github.com/MVDW-SplashOS/SourceStream.git
 
+    - name: Install SourceStream dependencies
+      if: steps.changed_packages.outputs.packages != ''
+      # --require-hashes enforces the hash-pinned lock file (pip verifies every
+      # download against requirements-lock.txt); also satisfies Sonar S8544.
+      run: pip install --require-hashes '--only-binary=:all:' -r SourceStream/requirements-lock.txt
+
     - name: Get the configuration repository
       if: steps.changed_packages.outputs.packages != ''
       run: |
@@ -144,12 +150,6 @@ jobs:
         EOF
         cp ../configuration/upstream-sources.yml upstream-sources.yml
         touch .lock-sources
-
-    - name: Install SourceStream dependencies
-      if: steps.changed_packages.outputs.packages != ''
-      # --require-hashes enforces the hash-pinned lock file (pip verifies every
-      # download against requirements-lock.txt); also satisfies Sonar S8544.
-      run: pip install --require-hashes '--only-binary=:all:' -r SourceStream/requirements-lock.txt
 
     - name: Write SFTP private key
       if: steps.changed_packages.outputs.packages != ''
