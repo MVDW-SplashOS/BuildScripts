@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "cups_filters"
+version: "2.0.1"
+
+# Build information
+build:
+  1:
+    script: "cups_filters.sh"
+    patch: false

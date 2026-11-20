@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "cups_browsed"
+version: "2.1.0"
+
+# Build information
+build:
+  1:
+    script: "cups_browsed.sh"
+    patch: false

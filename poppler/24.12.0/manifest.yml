@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "poppler"
+version: "24.12.0"
+
+# Build information
+build:
+  1:
+    script: "poppler.sh"
+    patch: false

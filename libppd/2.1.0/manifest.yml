@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "libppd"
+version: "2.1.0"
+
+# Build information
+build:
+  1:
+    script: "libppd.sh"
+    patch: false

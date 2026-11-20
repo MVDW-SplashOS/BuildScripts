@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "qpdf"
+version: "11.9.1"
+
+# Build information
+build:
+  1:
+    script: "qpdf.sh"
+    patch: false

@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "openjpeg"
+version: "2.5.3"
+
+# Build information
+build:
+  1:
+    script: "openjpeg.sh"
+    patch: false

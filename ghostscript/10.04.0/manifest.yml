@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "ghostscript"
+version: "10.04.0"
+
+# Build information
+build:
+  1:
+    script: "ghostscript.sh"
+    patch: false
