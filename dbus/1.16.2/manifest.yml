@@ -7,3 +7,8 @@ build:
   1:
     script: "dbus-pass1.sh"
     patch: false
+  # Rebuild with systemd units (dbus.service/dbus.socket). Used by distro.yml
+  # after systemd; the bootloader edition keeps pass 1.
+  2:
+    script: "dbus-systemd.sh"
+    patch: false
