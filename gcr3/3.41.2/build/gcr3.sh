@@ -1,5 +1,8 @@
-# gcr 3 (gck-1, gcr-base-3) - gnome-keyring 46 still links it. No GTK3
-# UI parts, no ssh-agent (gcr 4 provides that).
+# gcr 3 (gck-1, gcr-base-3, gcr-3) - gnome-keyring 46 still links it.
+# The GTK3 UI library (gcr-3) is built too: gnome-keyring's configure
+# requires gcr-3 (its `gnome-keyring` tool uses it for import/trust), and
+# GTK3 is built earlier in the chain. No ssh-agent: it only wraps OpenSSH,
+# which is not part of the system.
 # gcr 3.41.2 calls .path() on the ssh-add/ssh-agent lookups even when
 # -Dssh_agent=false made them optional, so meson setup fails without
 # OpenSSH ("Unable to get the path of a not-found external program").
@@ -15,7 +18,7 @@ meson setup build \
     --buildtype=release \
     -Dgtk_doc=false \
     -Dintrospection=false \
-    -Dgtk=false \
+    -Dgtk=true \
     -Dssh_agent=false \
     -Dsystemd=disabled
 
