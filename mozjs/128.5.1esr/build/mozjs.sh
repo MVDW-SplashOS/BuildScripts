@@ -31,6 +31,12 @@ sed -i \
     -e 's/^\(\s*\)yield value\.s$/\1yield value.value/' \
     python/mozbuild/mozbuild/frontend/reader.py
 
+# ICU 76 moved icu-uc to Requires.private in icu-i18n.pc, so
+# `pkg-config --libs icu-i18n` no longer adds -licuuc and libmozjs-128.so
+# fails to link (-z defs: undefined u_init_76, uenum_next_76, ...). Ask
+# for both modules, as BLFS does.
+sed -i 's/"icu-i18n >= 73.1"/"icu-uc icu-i18n >= 73.1"/' js/moz.configure
+
 mkdir obj
 cd obj
 
