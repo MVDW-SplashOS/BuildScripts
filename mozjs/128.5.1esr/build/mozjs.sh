@@ -8,6 +8,13 @@
 mkdir obj
 cd obj
 
+# LLVM_OBJDUMP: configure insists on finding llvm-objdump in every
+# compile-environment build, but only uses it for the Windows/macOS
+# dependentlibs.list of libxul (toolkit/library/build/dependentlibs.py),
+# which a js-only Linux build never generates. LLVM is not packaged; GNU
+# objdump satisfies the check. No other LLVM tool is required here
+# (readelf is GNU's, and bindgen/libclang is only for the browser).
+LLVM_OBJDUMP=/usr/bin/objdump \
 CC=gcc CXX=g++ \
 sh ../js/src/configure --prefix=/usr \
     --disable-debug-symbols \
