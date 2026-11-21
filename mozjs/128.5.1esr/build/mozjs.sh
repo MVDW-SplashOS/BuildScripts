@@ -18,6 +18,19 @@ sed -i '/^        return None$/i\
             return narrowed[0].rust_target\
 ' build/moz.configure/rust.configure
 
+# Python 3.14 removed ast.Str (deprecated since 3.8). mozbuild's
+# frontend/reader.py still builds ast.Str nodes when it rewrites template
+# functions ("module 'ast' has no attribute 'Str'" while reading
+# build/templates.mozbuild), and checks for them when reading Files()
+# metadata. Use ast.Constant, available since Python 3.8.
+sed -i \
+    -e 's/slice=c(ast\.Index(value=c(ast\.Str(s=node\.id)))),/slice=c(ast.Constant(value=node.id)),/' \
+    -e 's/^\(\s*\)assert isinstance(v, ast\.Str)$/\1assert isinstance(v, ast.Constant) and isinstance(v.value, str)/' \
+    -e 's/^\(\s*\)yield v\.s$/\1yield v.value/' \
+    -e 's/^\(\s*\)assert isinstance(value, ast\.Str)$/\1assert isinstance(value, ast.Constant) and isinstance(value.value, str)/' \
+    -e 's/^\(\s*\)yield value\.s$/\1yield value.value/' \
+    python/mozbuild/mozbuild/frontend/reader.py
+
 mkdir obj
 cd obj
 
