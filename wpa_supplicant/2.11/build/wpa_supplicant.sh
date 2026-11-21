@@ -29,6 +29,17 @@ CONFIG_CTRL_IFACE_DBUS_NEW=y
 CONFIG_CTRL_IFACE_DBUS_INTRO=y
 WPAEOF
 
+# OpenSSL 4 made ASN1_STRING opaque; 2.11's tls_openssl.c still reads
+# ->data/->length of the subjectAltName/CN strings directly ("invalid use
+# of incomplete typedef 'ASN1_IA5STRING'"). Use the accessors, available
+# since OpenSSL 1.1 (the rest of the file already does).
+sed -i \
+    -e 's/gen->d\.\(ia5\|dNSName\)->data/ASN1_STRING_get0_data(gen->d.\1)/g' \
+    -e 's/gen->d\.\(ia5\|dNSName\)->length/ASN1_STRING_length(gen->d.\1)/g' \
+    -e 's/\bcn->data\b/ASN1_STRING_get0_data(cn)/g' \
+    -e 's/\bcn->length\b/ASN1_STRING_length(cn)/g' \
+    src/crypto/tls_openssl.c
+
 cd wpa_supplicant
 make BINDIR=/usr/sbin LIBDIR=/usr/lib
 
