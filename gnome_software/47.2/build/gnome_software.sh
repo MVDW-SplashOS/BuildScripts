@@ -1,6 +1,11 @@
 # GNOME Software - graphical front-end for Flatpak, the only package
 # manager. Flatpak plugin only: no PackageKit/fwupd/malcontent/snap/
 # rpm-ostree, no web apps.
+
+# help/ only builds the yelp user help via gnome.yelp, which needs
+# itstool (and libxml2's Python bindings); neither is packaged and there
+# is no option to turn it off, so skip it.
+sed -i "/^subdir('help')$/d" meson.build
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
