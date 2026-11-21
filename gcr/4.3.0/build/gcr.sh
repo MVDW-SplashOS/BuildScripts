@@ -1,6 +1,9 @@
 # gcr 4 - certificate/key UI + gck (GNOME Shell, gnome-settings-daemon).
-# The ssh-agent moved from gnome-keyring to gcr 4; keep it (systemd user
-# unit gcr-ssh-agent.socket).
+#
+# -Dssh_agent=false: gcr's ssh agent (which replaced gnome-keyring's in
+# gcr 4) only wraps OpenSSH's ssh-agent/ssh-add, and meson setup fails
+# without them. OpenSSH is not part of the system; enable this again if
+# it is added before gcr.
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
@@ -9,7 +12,7 @@ meson setup build \
     -Dintrospection=true \
     -Dgtk4=true \
     -Dcrypto=libgcrypt \
-    -Dssh_agent=true \
+    -Dssh_agent=false \
     -Dsystemd=enabled
 
 ninja -C build
