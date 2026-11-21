@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "krb5"
+version: "1.22.3"
+
+# Build information
+build:
+  1:
+    script: "krb5.sh"
+    patch: false
