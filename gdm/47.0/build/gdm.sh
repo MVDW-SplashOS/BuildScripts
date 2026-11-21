@@ -10,9 +10,12 @@ passwd -ql gdm
 # manual is useless without yelp, so skip it.
 sed -i "/^subdir('docs')$/d" meson.build
 
+# c_std=gnu17: GCC 16 defaults to C23, where bool is a keyword, and
+# common/gdm-settings-utils.[ch] use it as a parameter name.
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
+    -Dc_std=gnu17 \
     -Dgdm-xsession=false \
     -Dx11-support=false \
     -Dxdmcp=disabled \
