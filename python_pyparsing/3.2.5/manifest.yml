@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "python_pyparsing"
+version: "3.2.5"
+
+# Build information
+build:
+  1:
+    script: "python_pyparsing.sh"
+    patch: false
