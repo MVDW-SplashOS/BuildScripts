@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "cmake"
+version: "4.4.5"
+
+# Build information
+build:
+  1:
+    script: "cmake.sh"
+    patch: false
