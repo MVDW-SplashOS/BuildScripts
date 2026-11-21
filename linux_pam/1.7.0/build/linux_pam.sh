@@ -1,6 +1,11 @@
 # Linux-PAM - gdm requires it (password + autologin conversations) and
 # gnome-keyring uses it to unlock the login keyring. shadow stays the
 # non-PAM build for console login; that is fine.
+#
+# i18n stays at its default: with -Di18n=disabled, 1.7.0's libpam/
+# meson.build references the `libintl` dependency that the top-level
+# meson.build only defines when i18n is not disabled ("Unknown variable
+# name libintl"). glibc provides libintl and gettext is installed.
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
@@ -10,8 +15,7 @@ meson setup build \
     -Dnis=disabled \
     -Deconf=disabled \
     -Dexamples=false \
-    -Dlogind=enabled \
-    -Di18n=disabled
+    -Dlogind=enabled
 
 ninja -C build
 ninja -C build install
