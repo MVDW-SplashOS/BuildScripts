@@ -8,6 +8,12 @@
 # sam.ldb backend, and there is no AD DC here; tdb covers the rest.
 # -std=gnu17: GCC 16 defaults to C23; built as gnu17 up front like the
 # other older C code, rather than finding out halfway through a long build.
+# glibc 2.43 provides C23 memset_explicit(s, c, n); libreplace's
+# rep_memset_s only ever reached its HAVE_MEMSET_EXPLICIT branch on paper
+# and calls it memset_s-style with four arguments. Use the C23 signature.
+sed -i 's/memset_explicit(dest, destsz, ch, count);/memset_explicit(dest, ch, count);/' lib/replace/replace.c
+grep -q 'memset_explicit(dest, ch, count);' lib/replace/replace.c
+
 PYTHON=python3 \
 CFLAGS="-std=gnu17 -I/usr/include/tirpc" \
 LDFLAGS="-ltirpc" \
