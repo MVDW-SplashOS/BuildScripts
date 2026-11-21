@@ -37,6 +37,12 @@ LDFLAGS="-ltirpc" \
     --enable-cups
 
 make
+
+# waf install creates the lock dir /var/lock/samba, and /var/lock links to
+# /run/lock - which does not exist on the chroot's empty /run tmpfs (on the
+# booted system systemd-tmpfiles creates it, and Samba recreates its own
+# lock dir at runtime).
+mkdir -p /run/lock
 make install
 
 install -v -m644 examples/smb.conf.default /etc/samba/smb.conf.default 2>/dev/null || true
