@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "librest"
+version: "0.9.1"
+
+# Build information
+build:
+  1:
+    script: "librest.sh"
+    patch: false
