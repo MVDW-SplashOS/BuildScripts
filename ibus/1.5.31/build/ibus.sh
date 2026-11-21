@@ -2,6 +2,10 @@
 # sources, IBus typelib). Core daemon + simple engine + GI only: no GTK
 # IM modules (GTK uses the Wayland text-input protocol under Mutter), no
 # Python/Vala, no Unicode/emoji dictionaries (need UCD/CLDR data).
+#
+# -std=gnu17: GCC >= 15 defaults to C23, where `f ()` declares a function
+# with no parameters; ibusenginesimple.c defines load_emoji_dict () and
+# calls it with an argument ("too many arguments to function").
 ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \
@@ -21,7 +25,8 @@
     --disable-emoji-dict \
     --disable-unicode-dict \
     --enable-introspection \
-    --enable-wayland
+    --enable-wayland \
+    CFLAGS="${CFLAGS:--O2 -g} -std=gnu17"
 
 make
 make install
