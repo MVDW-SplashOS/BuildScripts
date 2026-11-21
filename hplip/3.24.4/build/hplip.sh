@@ -2,6 +2,9 @@
 # CUPS .drv file. The Python tools (hp-setup, hp-toolbox), the `hp`
 # backend, scanning and fax are not built; CUPS's own usb/ipp/socket
 # backends drive the printers. No Python/Qt/SANE/net-snmp needed.
+# gnu17: GCC 16 defaults to C23; built as gnu17 up front like the other
+# older C code (K&R-style () declarations, bool), rather than per failure.
+CFLAGS="${CFLAGS:--O2 -g} -std=gnu17" \
 ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \
