@@ -5,6 +5,11 @@ getent passwd gdm >/dev/null || \
     useradd -c "GDM Daemon Owner" -d /var/lib/gdm -u 21 -g gdm -s /bin/false gdm
 passwd -ql gdm
 
+# docs/ only builds the GDM yelp manual via gnome.yelp, which needs
+# itstool (and libxml2's Python bindings); neither is packaged and the
+# manual is useless without yelp, so skip it.
+sed -i "/^subdir('docs')$/d" meson.build
+
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
