@@ -3,6 +3,12 @@
 # no nss.pc, so install by hand (BLFS layout) and write the .pc file.
 cd nss
 
+# GCC >= 15 defaults to C23, where bool/true/false are keywords;
+# cmd/pwdecrypt declares `enum { false = 0, true = 1 } bool;` and fails to
+# compile. It only needs true/false, so use <stdbool.h> (valid in C17 and
+# C23) instead.
+sed -i '/^enum {$/{N;N;N;s/^enum {\n    false = 0,\n    true = 1\n} bool;$/#include <stdbool.h>/}' cmd/pwdecrypt/pwdecrypt.c
+
 make BUILD_OPT=1 \
      NSPR_INCLUDE_DIR=/usr/include/nspr \
      USE_SYSTEM_ZLIB=1 \
