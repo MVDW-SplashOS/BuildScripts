@@ -4,10 +4,10 @@
 # the Adwaita symbolic icons need.
 #
 # 2.58.x is the last series built with plain cargo; 2.59+ needs cargo-c.
-# The upstream tarball does NOT vendor its crates: the source in
-# SplashBuilder/sources is repacked with `cargo vendor --locked vendor` and
-# a .cargo/config.toml that redirects crates-io to vendor/, so the chroot
-# build runs offline (same scheme as splash_boot_manager).
+# The upstream tarball does NOT vendor its crates: SourceStream does it at
+# repack time (`cargo_vendor: true` in upstream-sources.yml -> cargo vendor
+# --locked + a .cargo/config.toml redirecting crates-io to vendor/), so the
+# chroot build runs offline (same scheme as splash_boot_manager).
 export CARGO_HOME="$PWD/.cargo-home"
 export CARGO_NET_OFFLINE=true
 
