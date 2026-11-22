@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "Splash Boot Screen"
+version: "0.1.0"
+
+# Build information
+build:
+  1:
+    script: "splash_boot_screen.sh"
+    patch: false
