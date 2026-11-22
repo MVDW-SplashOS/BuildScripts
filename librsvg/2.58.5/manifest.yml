@@ -1,0 +1,9 @@
+# Basic package metadata
+package: "librsvg"
+version: "2.58.5"
+
+# Build information
+build:
+  1:
+    script: "librsvg.sh"
+    patch: false
