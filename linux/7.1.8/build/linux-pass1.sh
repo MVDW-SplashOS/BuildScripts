@@ -27,6 +27,12 @@ make defconfig
 # - FUSE_FS: AppImages mount their payload via FUSE; Flatpak's document
 #   portal (xdg-desktop-portal) and ostree's rofiles-fuse use it too
 # - SQUASHFS (+XZ/ZSTD): AppImage payloads are SquashFS images
+# - FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER + SPLASHOS_BOOTLOGO
+#   (patch/splashos_bootlogo.patch): with "splashos.bootlogo" on the
+#   cmdline the DRM fbdev emulation paints the boot logo before its first
+#   modeset and fbcon waits for real console output, so the kexec handoff
+#   from the Splash Boot Manager does not go black. Without the parameter
+#   (the boot manager's own kernel) fbcon takes over immediately as before.
 # ---------------------------------------------------------------------------
 cat > splashos.fragment << "EOF"
 CONFIG_FB=y
@@ -42,6 +48,8 @@ CONFIG_FUSE_FS=y
 CONFIG_SQUASHFS=y
 CONFIG_SQUASHFS_XZ=y
 CONFIG_SQUASHFS_ZSTD=y
+CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y
+CONFIG_SPLASHOS_BOOTLOGO=y
 EOF
 
 ./scripts/kconfig/merge_config.sh -m .config splashos.fragment
@@ -51,7 +59,8 @@ rm splashos.fragment
 # Fail the build if any delta did not survive kconfig resolution (a renamed
 # or newly constrained symbol must be noticed here, not at boot time).
 for sym in FRAMEBUFFER_CONSOLE KEXEC KEXEC_FILE EFI_STUB EFIVAR_FS \
-           OVERLAY_FS USER_NS FUSE_FS SQUASHFS SQUASHFS_XZ SQUASHFS_ZSTD; do
+           OVERLAY_FS USER_NS FUSE_FS SQUASHFS SQUASHFS_XZ SQUASHFS_ZSTD \
+           FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER SPLASHOS_BOOTLOGO; do
     grep -q "^CONFIG_${sym}=y$" .config || {
         echo "FATAL: CONFIG_${sym} missing from the kernel config" >&2
         exit 1

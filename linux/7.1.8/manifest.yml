@@ -9,4 +9,4 @@ build:
     patch: false
   2:
     script: "linux-pass1.sh"
-    patch: false
+    patch: "splashos_bootlogo.patch"
